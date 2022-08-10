@@ -14,7 +14,7 @@ const Input:FC<InputProps> = (props) => {
   
   return (
     <div className="flex gap-2 items-center text-base relative my-2">
-      <label htmlFor={id} className="whitespace-nowrap absolute bg-zinc-800 px-2 -top-4 left-2 color-react">
+      <label htmlFor={id} className="whitespace-nowrap absolute bg-zinc-900 px-2 -top-4 left-2 color-react">
         {props.label}
       </label>
 
@@ -24,8 +24,8 @@ const Input:FC<InputProps> = (props) => {
         id={id} 
         value={props.value} 
         required={props.required} 
-        className="w-full outline-none border-2 border-zinc-700 bg-zinc-800 
-          rounded-md px-2 py-1 border-react-active transition-all text-zinc-100 
+        className="w-full outline-none border-2 border-zinc-800 bg-zinc-900 
+          rounded-md px-2 py-1 border-react-active transition-all text-zinc-300 
           placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none"
         onChange={(e) => props.setValue(e.target.value)}
       />

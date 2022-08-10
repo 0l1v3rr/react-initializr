@@ -27,7 +27,7 @@ const RadioInput:FC<RadioProps> = (props) => {
         onChange={handleChange}
       />
 
-      <label htmlFor={id}>{props.value}</label>
+      <label className="text-zinc-300" htmlFor={id}>{props.value}</label>
     </div>
   );
 }

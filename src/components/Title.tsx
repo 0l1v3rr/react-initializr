@@ -6,8 +6,8 @@ interface TitleProps {
 
 const Title:FC<TitleProps> = ({ text }) => {
 	return (
-    <div className="font-semibold text-white my-2 border-b-2 border-solid 
-      border-zinc-700 w-full pb-3 text-xl">
+    <div className="font-semibold my-2 border-b-2 border-solid 
+      border-zinc-800 w-full pb-3 text-xl">
       {text}
     </div>
 	);
