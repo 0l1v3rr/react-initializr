@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar { display: none; }
+
+:root { --react-color: #61DAFB; }
+.color-react { color: var(--react-color); }
+.color-react-hover:hover { color: var(--react-color); }
+.border-react { border-color: var(--react-color); }
+.border-react-active:focus, .border-react-active:active { border-color: var(--react-color); }
+
+.radio > input[type="radio"]:checked + label {
+    color: var(--react-color);
+}
+
+.radio > input[type="radio"]:checked + label::before {
+    border: 2px solid var(--react-color);
+    background-color: var(--react-color);
+}
+
+.radio > input[type="radio"] {
+    display: none;
+}
+
+.radio > label {
+    margin-left: 1.65rem;
+    font-size: .95em;
+}
+
+.radio > label::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-40%);
+    left: -10%;
+    margin-left: 1rem;
+    transition: 75ms;
+}
+
+.radio:hover > label::before {
+    border: 2px solid var(--react-color);
+}
