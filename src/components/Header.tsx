@@ -15,8 +15,10 @@ import {
 
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
+import { useState } from 'react';
 
 const Header = () => {
+  const [copyText, setCopyText] = useState("Copy Link");
 
   const name = useRecoilValue(nameState);
   const version = useRecoilValue(versionState);
@@ -41,10 +43,14 @@ const Header = () => {
 
     let domain = "http://localhost:3000";
     // let domain = "https://0l1v3rr.github.io/react-initializr";
-    let url = `${domain}?${params.toString()}`
+    let url = `${domain}?${params.toString()}`;
 
-    // TODO: copy
-    console.log(url);
+    // copying the url to the clipboard
+    navigator.clipboard.writeText(url);
+
+    // changing the button text for 1000 ms
+    setCopyText("Copied❗");
+    setTimeout(() => setCopyText("Copy Link"), 1000);
   };
 
   return (
@@ -71,7 +77,7 @@ const Header = () => {
         />
 
         <Button
-          text="Copy Link"
+          text={copyText}
           icon={BiCopy}
           onClick={copyLink}
         />
