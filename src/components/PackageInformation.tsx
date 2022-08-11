@@ -12,15 +12,6 @@ import {
 } from "../atoms";
 
 const PackageInformation = () => {
-  // parsing the query parameters
-  const params = new URLSearchParams(window.location.search);
-  const pName = params.get("name");
-  const pVersion = params.get("version");
-  const pDescription = params.get("description");
-  const pRepo = params.get("repository");
-  const pAuthor = params.get("author");
-  const pLicense = params.get("license");
-  
   // default form values with recoil states
   const [name, setName] = useRecoilState(nameState);
   const [version, setVersion] = useRecoilState(versionState);
@@ -31,6 +22,16 @@ const PackageInformation = () => {
 
   // overriding the state value if the query param is not null
   useEffect(() => {
+    // parsing the query parameters
+    const params = new URLSearchParams(window.location.search);
+    
+    const pName = params.get("name");
+    const pVersion = params.get("version");
+    const pDescription = params.get("description");
+    const pRepo = params.get("repository");
+    const pAuthor = params.get("author");
+    const pLicense = params.get("license");
+    
     if(pName !== null) setName(pName);
     if(pVersion !== null) setVersion(pVersion);
     if(pDescription !== null) setDescription(pDescription);

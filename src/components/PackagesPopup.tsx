@@ -59,10 +59,10 @@ const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
       </div>
 
       <div className="px-4 py-2 w-full overflow-y-auto flex flex-col">
-        {currentPackages.length == 0 && 
+        {currentPackages.length === 0 && 
           <div className="text-center text-zinc-500 text-base">No results found.</div>}
 
-        {currentPackages.length != 0 && currentPackages.map(p => {
+        {currentPackages.length !== 0 && currentPackages.map(p => {
             return (
               <SearchItem 
                 key={(p as any).package.name} 

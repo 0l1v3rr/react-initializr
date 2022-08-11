@@ -11,7 +11,7 @@ const PackageItem:FC<PackageItemProps> = (props) => {
   return (
     <div className="w-full border-2 border-solid border-zinc-800 my-1 shadow-sm px-3 py-1 rounded-md">
       <div className="flex items-center justify-between">
-        <a href={`https://www.npmjs.com/package/${props.package.packageName}`} target="_blank"
+        <a href={`https://www.npmjs.com/package/${props.package.packageName}`} rel="noreferrer" target="_blank"
           className="text-lg text-zinc-200 font-semibold color-react-hover transition-all duration-100">
           {props.package.packageName} 
           <span className="font-light text-zinc-400 text-base"> ({props.package.version})</span>

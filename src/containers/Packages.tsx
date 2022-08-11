@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import Title from "../components/Title";
 
 import { FiPackage } from 'react-icons/fi';
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import { packagesArrayState } from "../atoms";
 import PackageItem from "../components/PackageItem";
@@ -11,7 +11,7 @@ import BlurOverlay from "../components/BlurOverlay";
 import PackagesPopup from "../components/PackagesPopup";
 
 const Packages = () => {
-  const [packageArray, setPackageArray] = useRecoilState(packagesArrayState);
+  const packageArray = useRecoilValue(packagesArrayState);
   const [isPackagePopupActive, setIsPackagePopupActive] = useState(false);
   
   return (

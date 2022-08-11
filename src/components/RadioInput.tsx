@@ -1,5 +1,5 @@
 import { FC, useId } from "react";
-import { RecoilState, useRecoilState } from "recoil";
+import { RecoilState, useSetRecoilState } from "recoil";
 
 interface RadioProps {
   value: string,
@@ -9,7 +9,7 @@ interface RadioProps {
 }
 
 const RadioInput:FC<RadioProps> = (props) => {
-  const [state, setState] = useRecoilState(props.state);
+  const setState = useSetRecoilState(props.state);
   const id = `${props.value}-${useId()}`;
 
   const handleChange = () => {
