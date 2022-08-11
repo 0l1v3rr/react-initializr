@@ -1,8 +1,10 @@
+import axios from "axios";
 import { FC, useState } from "react";
 
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 import Button from "./Button";
 import Input from "./Input";
+import SearchItem from "./SearchItem";
 
 interface PopupProps {
   isActive: boolean,
@@ -11,18 +13,22 @@ interface PopupProps {
 
 const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [currentPackages, setCurrentPackages] = useState([]);
 
   const activeClasses = "opacity-100 pointer-events-auto scale-100";
   const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
   const handleSearchBtnClick = () => {
-
+    axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`)
+      .then(res => setCurrentPackages(res.data.objects))
+      .catch(() => setCurrentPackages([]));
   };
   
   return (
-    <div className={`border-2 bg-zinc-900 border-solid border-zinc-800 rounded-md shadow-2xl 
-      w-fit left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 select-none transition-all  
-      duration-300 fixed top-1/2 ${isActive ? activeClasses : inactiveClasses}`}>
+    <div className={`border-2 bg-zinc-900 border-solid border-zinc-800 rounded-md 
+      shadow-lg left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 select-none 
+      transition-all duration-300 fixed top-1/2 max-h-[95vh] overflow-y-auto w-[95%] 
+      sm:w-[80%] md:w-[70%] lg:w-[60%] ${isActive ? activeClasses : inactiveClasses}`}>
 
       <div className="border-b-2 border-solid border-zinc-800 flex items-center 
         justify-between gap-32 px-4 py-2">
@@ -52,8 +58,23 @@ const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
         />
       </div>
 
-      <div className="px-4 py-2 w-full">
-        <div className="text-center text-zinc-500 text-base">No results found.</div>
+      <div className="px-4 py-2 w-full overflow-y-auto flex flex-col">
+        {currentPackages.length == 0 && 
+          <div className="text-center text-zinc-500 text-base">No results found.</div>}
+
+        {currentPackages.length != 0 && currentPackages.map(p => {
+            return (
+              <SearchItem 
+                key={(p as any).package.name} 
+                package={{
+                  packageName: (p as any).package.name,
+                  description: (p as any).package.description,
+                  removeable: true,
+                  version: (p as any).package.version,
+                }} 
+              />
+            );
+          })}
       </div>
     </div>
   );

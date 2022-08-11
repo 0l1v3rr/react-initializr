@@ -13,7 +13,7 @@ const Input:FC<InputProps> = (props) => {
   const id = `${props.label}-${useId()}`;
   
   return (
-    <div className="flex gap-2 items-center text-base relative my-2">
+    <div className="flex gap-2 items-center text-base relative my-2 w-full">
       <label htmlFor={id} className="whitespace-nowrap absolute bg-zinc-900 px-2 -top-4 left-2 color-react">
         {props.label}
       </label>

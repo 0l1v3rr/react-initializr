@@ -1,6 +1,6 @@
 export interface Package {
     packageName: string,
-    version: string,
     description: string,
+    version: string,
     removeable: boolean,
 }
