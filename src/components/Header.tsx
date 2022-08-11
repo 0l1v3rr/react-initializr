@@ -10,7 +10,8 @@ import {
   gitRepoState, 
   authorState, 
   licenseState,
-  languageState
+  languageState,
+  packagesArrayState
 } from "../atoms";
 
 import Button from "./Button";
@@ -19,7 +20,7 @@ import { useState } from 'react';
 
 const Header = () => {
   const [copyText, setCopyText] = useState("Copy Link");
-
+  
   const name = useRecoilValue(nameState);
   const version = useRecoilValue(versionState);
   const description = useRecoilValue(descriptionState);
@@ -27,6 +28,7 @@ const Header = () => {
   const author = useRecoilValue(authorState);
   const license = useRecoilValue(licenseState);
   const language = useRecoilValue(languageState);
+  const packages = useRecoilValue(packagesArrayState);
 
   const copyLink = () => {
     // building the URL to copy
@@ -40,6 +42,7 @@ const Header = () => {
     if(author.trim() !== "") params.append("author", author);
     if(license.trim() !== "") params.append("license", license);
     params.append("language", language);
+    params.append("packages", packages.map(p => p.packageName).join(";"));
 
     let domain = "http://localhost:3000";
     // let domain = "https://0l1v3rr.github.io/react-initializr";
