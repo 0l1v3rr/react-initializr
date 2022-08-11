@@ -1,6 +1,6 @@
 import Languages from "../components/Languages";
 import PackageInformation from "../components/PackageInformation";
-import Template from "../components/Template";
+import PackageManager from "../components/PackageManager";
 import Title from "../components/Title";
 
 const ProjectInfo = () => {
@@ -11,7 +11,7 @@ const ProjectInfo = () => {
 
       <div className="flex justify-between">
         <Languages />
-        <Template />
+        <PackageManager />
       </div>
 
       <PackageInformation />

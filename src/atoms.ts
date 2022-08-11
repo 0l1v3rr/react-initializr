@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { Package } from "./types";
 
 export const nameState = atom({
     key: "name",
@@ -35,7 +36,22 @@ export const languageState = atom({
     default: "JavaScript"
 });
 
-export const templateState = atom({
-    key: "template",
-    default: "create-react-app"
+export const pmState = atom({
+    key: "pm",
+    default: "npm"
+});
+
+export const packagesArrayState = atom({
+    key: "packagesArray",
+    default: [{
+        packageName: "react",
+        description: "React is a JavaScript library for creating user interfaces.",
+        version: "^18.2.0",
+        removeable: false
+    } as Package, {
+        packageName: "react-scripts",
+        description: "Configuration and scripts for Create React App.",
+        version: "5.0.1",
+        removeable: false
+    } as Package]
 });
