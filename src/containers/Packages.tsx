@@ -6,22 +6,25 @@ import { useRecoilState } from "recoil";
 
 import { packagesArrayState } from "../atoms";
 import PackageItem from "../components/PackageItem";
+import { useState } from "react";
+import BlurOverlay from "../components/BlurOverlay";
+import PackagesPopup from "../components/PackagesPopup";
 
 const Packages = () => {
   const [packageArray, setPackageArray] = useRecoilState(packagesArrayState);
+  const [isPackagePopupActive, setIsPackagePopupActive] = useState(false);
   
-  const handlePackagesBtnClick = () => {
-
-  };
-
   return (
     <div className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">
       <Title text="Packages" />
       
+      <BlurOverlay isActive={isPackagePopupActive} />
+      <PackagesPopup isActive={isPackagePopupActive} closePopup={() => setIsPackagePopupActive(false)} />
+
       <div className="text-base block pb-2 border-b-2 border-solid border-zinc-800 mb-1">
         <Button 
           icon={FiPackage}
-          onClick={handlePackagesBtnClick}
+          onClick={() => setIsPackagePopupActive(true)}
           text="Search for packages"
         />
       </div>

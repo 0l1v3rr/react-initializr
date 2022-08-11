@@ -15,7 +15,7 @@ const Button:FC<ButtonProps> = (props) => {
       transition-all hover:scale-[103%] hover:shadow-md">
       <props.icon />
       
-      <span className="text-zinc-200">{props.text.toUpperCase()}</span>
+      {props.text != "" && <span className="text-zinc-200">{props.text.toUpperCase()}</span>}
     </button>
   );
 };
