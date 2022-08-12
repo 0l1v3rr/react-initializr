@@ -43,15 +43,5 @@ export const pmState = atom({
 
 export const packagesArrayState = atom({
     key: "packagesArray",
-    default: [{
-        packageName: "react",
-        description: "React is a JavaScript library for creating user interfaces.",
-        version: "^18.2.0",
-        removeable: false
-    } as Package, {
-        packageName: "react-scripts",
-        description: "Configuration and scripts for Create React App.",
-        version: "5.0.1",
-        removeable: false
-    } as Package]
+    default: [] as Package[]
 });
