@@ -28,6 +28,7 @@ const Input:FC<InputProps> = (props) => {
           rounded-md px-2 py-1 border-react-active transition-all text-zinc-300 
           placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none"
         onChange={(e) => props.setValue(e.target.value)}
+        autoComplete="off"
       />
     </div>
   );

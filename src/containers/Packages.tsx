@@ -19,20 +19,26 @@ const Packages = () => {
   useEffect(() => {
     setPackageArray([]);
 
+    // parsing the query params from the url
     const params = new URLSearchParams(window.location.search);
     const packagesParam = params.get("packages");
+
+    // if the packages param is null, then we use the default values
     const packagesToIterate = packagesParam === null ? ["react", "react-scripts"] : packagesParam.split(";");
 
     for(let i of packagesToIterate) {
+      // fetching the current package from npm registry api
       axios.get(`https://registry.npmjs.org/${i}/latest`)
         .then(res => {
+          // creating the package from the result
           const r: Package = {
             packageName: res.data.name,
             description: res.data.description,
-            removeable: false,
+            removeable: !(res.data.name === "react" || res.data.name === "react-scripts"),
             version: res.data.version
           }
 
+          // appending it to our packages array
           setPackageArray(prev => [...prev, r]);
         });
     }

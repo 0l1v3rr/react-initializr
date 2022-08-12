@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { packagesArrayState } from "../atoms";
 import { Package } from "../types";
@@ -9,12 +9,14 @@ interface PackageItemProps {
 
 const SearchItem:FC<PackageItemProps> = (props) => {
   const setPackageArray = useSetRecoilState(packagesArrayState);
+  const [isAdded, setIsAdded] = useState(false);
   
   return (
-    <div className="w-full border-2 border-solid border-zinc-800 my-1 shadow-sm 
+    <div className={`w-full border-2 border-solid border-zinc-800 my-1 shadow-sm 
       px-3 py-1 rounded-md cursor-pointer transition-all duration-100 hover:border-zinc-700 
-      hover:bg-zinc-800 hover:scale-[101%]" onClick={() => {
+      hover:bg-zinc-800 hover:scale-[101%] ${isAdded && "hidden"}`} onClick={() => {
         setPackageArray(prev => [...prev, props.package]);
+        setIsAdded(true);
       }}>
       <div className="flex items-center justify-between">
         <div className="text-lg text-zinc-200 font-semibold">

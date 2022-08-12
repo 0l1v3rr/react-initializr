@@ -2,6 +2,8 @@ import axios from "axios";
 import { FC, useState } from "react";
 
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
+import { packagesArrayState } from "../atoms";
 import Button from "./Button";
 import Input from "./Input";
 import SearchItem from "./SearchItem";
@@ -13,14 +15,26 @@ interface PopupProps {
 
 const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [currentPackages, setCurrentPackages] = useState([]);
+  const [currentPackages, setCurrentPackages] = useState<any[]>([]);
+
+  const packageArray = useRecoilValue(packagesArrayState);
 
   const activeClasses = "opacity-100 pointer-events-auto scale-100";
   const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
   const handleSearchBtnClick = () => {
     axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`)
-      .then(res => setCurrentPackages(res.data.objects))
+      .then(res => {
+        const resArr: any[] = [];
+
+        for(let i of res.data.objects) {
+          if(!packageArray.map(p => p.packageName).includes(i.package.name)) {
+            resArr.push(i);
+          }
+        }
+
+        setCurrentPackages(resArr);
+      })
       .catch(() => setCurrentPackages([]));
   };
   
