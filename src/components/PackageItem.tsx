@@ -2,12 +2,30 @@ import { FC } from "react";
 import { Package } from "../types";
 
 import { AiOutlineDelete } from 'react-icons/ai';
+import { useSetRecoilState } from "recoil";
+import { packagesArrayState } from "../atoms";
 
 interface PackageItemProps {
   package: Package,
 }
 
 const PackageItem:FC<PackageItemProps> = (props) => {
+  const setPackageArray = useSetRecoilState(packagesArrayState);
+  
+  const handleDeleteClick = () => {
+    setPackageArray(prev => {
+      const res: Package[] = [];
+
+      for(const p of prev) {
+        if(p.packageName.toLowerCase() !== props.package.packageName.toLowerCase()) {
+          res.push(p);
+        }
+      }
+
+      return res;
+    });
+  };
+  
   return (
     <div className="w-full border-2 border-solid border-zinc-800 my-1 shadow-sm px-3 py-1 rounded-md">
       <div className="flex items-center justify-between">
@@ -19,7 +37,8 @@ const PackageItem:FC<PackageItemProps> = (props) => {
 
         <button className={`transition-all duration-200 
           ${props.package.removeable ? "hover:text-red-500 cursor-pointer hover:scale-110" : 
-          "text-zinc-500 cursor-not-allowed"}`} disabled={!props.package.removeable}>
+          "text-zinc-500 cursor-not-allowed"}`} disabled={!props.package.removeable}
+          onClick={handleDeleteClick}>
           <AiOutlineDelete />
         </button>
       </div>
