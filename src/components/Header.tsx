@@ -64,10 +64,44 @@ const Header = () => {
     const zip = new JSZip();
     const project = zip.folder(name);
 
-    // creating the package.json file
-    const packageJson = await generatePackageJson()
+    // public and src folders
+    const fpublic = project?.folder("public");
+    const fsrc = project?.folder("src");
+
+    // downloading and/or generating the necessary code
+    const packageJson = await generatePackageJson();
+    const gitignore = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/.gitignore");
+    const indexcss = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/src/index.css");
+    const appSrc = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/src/App.tsx");
+    const manifest = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/public/manifest.json");
+    const indexhtml = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/public/index.html");
+   
+    // creating the files and adding it to the zip
     project?.file("package.json", packageJson);
     project?.file("README.md", `# ${name}`);
+    project?.file(".gitignore", gitignore);
+    fsrc?.file("index.css", indexcss);
+    fsrc?.file(language.toLowerCase() === "typescript" ? "App.tsx" : "App.js", appSrc);
+    fpublic?.file("manifest.json", manifest);
+    fpublic?.file("index.html", indexhtml);
+    fpublic?.file("robots.txt", "User-agent: *");
+
+    // if the language is TS
+    if(language.toLowerCase() === "typescript") {
+      // tsconfig
+      const tsconfig = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/tsconfig.json");
+      project?.file("tsconfig.json", tsconfig);
+
+      // index
+      const index = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/src/index.tsx");
+      fsrc?.file("index.tsx", index);
+
+    // if the language is not TS (so it's JS)
+    } else {
+      // index
+      const index = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/src/index.js");
+      fsrc?.file("index.js", index);
+    }
 
     // donwloading the ZIP
     zip.generateAsync({ type: "blob" })
@@ -145,6 +179,12 @@ const Header = () => {
 
     // converting the object to a JSON
     return JSON.stringify(result);
+  }
+
+  const readRemoteFile = async (url: string) => {
+    let res = "";
+    await axios.get(url).then(r => res = r.data);
+    return res;
   }
 
   const getLatestDependencyVersion = async (name: string) => {
