@@ -9,6 +9,7 @@
 .color-react-hover:hover { color: var(--react-color); }
 .border-react { border-color: var(--react-color); }
 .border-react-active:focus, .border-react-active:active { border-color: var(--react-color); }
+.show-child-on-hover:hover > div { opacity: 1; }
 
 .radio > input[type="radio"]:checked + label {
     color: var(--react-color);

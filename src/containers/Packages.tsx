@@ -12,6 +12,7 @@ import BlurOverlay from "../components/BlurOverlay";
 import PackagesPopup from "../components/PackagesPopup";
 import axios from "axios";
 import { Package } from "../types";
+import HoverContainer from "../components/HoverContainer";
 
 const Packages = () => {
   const [packageArray, setPackageArray] = useRecoilState(packagesArrayState);
@@ -78,11 +79,15 @@ const Packages = () => {
           text="Search for packages"
         />
 
-        <Button 
-          icon={isDefaultPackagesHidden ? BsEyeSlash : BsEye}
-          onClick={() => setIsDefaultPackagesHidden(prev => !prev)}
-          text=""
-        />
+        <HoverContainer 
+          hoverText={isDefaultPackagesHidden ? "Show defaults" : "Hide defaults"}
+        >
+          <Button 
+            icon={isDefaultPackagesHidden ? BsEyeSlash : BsEye}
+            onClick={() => setIsDefaultPackagesHidden(prev => !prev)}
+            text=""
+          />
+        </HoverContainer>
       </div>
 
       {packageArray.map(p => {

@@ -51,8 +51,8 @@ const Header = () => {
       params.append("packages", nonDefaultPackages.map(p => p.packageName).join(";"));
     }
 
-    let domain = "http://localhost:3000";
-    // let domain = "https://0l1v3rr.github.io/react-initializr";
+    // let domain = "http://localhost:3000";
+    let domain = "https://0l1v3rr.github.io/react-initializr";
     let url = `${domain}?${params.toString()}`;
 
     // copying the url to the clipboard
