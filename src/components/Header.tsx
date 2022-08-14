@@ -45,7 +45,11 @@ const Header = () => {
     if(author.trim() !== "") params.append("author", author);
     if(license.trim() !== "") params.append("license", license);
     params.append("language", language);
-    params.append("packages", packages.map(p => p.packageName).join(";"));
+
+    const nonDefaultPackages = packages.filter(p => p.removeable);
+    if(nonDefaultPackages.length > 0) {
+      params.append("packages", nonDefaultPackages.map(p => p.packageName).join(";"));
+    }
 
     let domain = "http://localhost:3000";
     // let domain = "https://0l1v3rr.github.io/react-initializr";
@@ -111,21 +115,10 @@ const Header = () => {
   const generatePackageJson = async () => {
     let dependencies: any = {};
 
-    // adding some libraries manually
-    // firstly, finding out the latest version each of them
-    let testingJestVersion = await getLatestDependencyVersion("@testing-library/jest-dom");
-    let testingReactVersion = await getLatestDependencyVersion("@testing-library/react");
-    let testingUserEventVersion = await getLatestDependencyVersion("@testing-library/user-event");
-    let reactDomVersion = await getLatestDependencyVersion("react-dom");
-
-    // then append
-    dependencies["@testing-library/jest-dom"] = `^${testingJestVersion}`;
-    dependencies["@testing-library/react"] = `^${testingReactVersion}`;
-    dependencies["@testing-library/user-event"] = `^${testingUserEventVersion}`;
-    dependencies["react-dom"] = `^${reactDomVersion}`;
-
     // we only append these dependencies if the choosen language is typescript
     if(language.toLowerCase() === "typescript") {
+      // adding some libraries manually
+      // but firstly, finding out the latest version each of them
       let tsVersion = await getLatestDependencyVersion("typescript");
       let jestVersion = await getLatestDependencyVersion("@types/jest");
       let nodeVersion = await getLatestDependencyVersion("@types/node");
