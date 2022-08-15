@@ -86,7 +86,7 @@ const Header = () => {
     project?.file(".gitignore", gitignore);
     fsrc?.file("index.css", indexcss);
     fsrc?.file(language.toLowerCase() === "typescript" ? "App.tsx" : "App.js", appSrc);
-    fpublic?.file("manifest.json", manifest);
+    fpublic?.file("manifest.json", JSON.stringify(manifest));
     fpublic?.file("index.html", indexhtml);
     fpublic?.file("robots.txt", "User-agent: *");
 
