@@ -1,10 +1,9 @@
 import axios from "axios";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { packagesArrayState } from "../atoms";
-import Button from "./Button";
 import Input from "./Input";
 import SearchItem from "./SearchItem";
 
@@ -22,8 +21,9 @@ const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
   const activeClasses = "opacity-100 pointer-events-auto scale-100";
   const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
-  const handleSearchBtnClick = () => {
-    axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`)
+  useEffect(() => {
+    if(searchValue.length > 3) {
+      axios.get(`https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`)
       .then(res => {
         const resArr: any[] = [];
 
@@ -36,7 +36,11 @@ const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
         setCurrentPackages(resArr);
       })
       .catch(() => setCurrentPackages([]));
-  };
+    } else {
+      setCurrentPackages([]);
+    }
+
+  }, [searchValue]);
   
   return (
     <div className={`border-2 bg-zinc-900 border-solid border-zinc-800 rounded-md 
@@ -63,12 +67,6 @@ const PackagesPopup:FC<PopupProps> = ({ isActive, closePopup }) => {
           type="text"
           value={searchValue}
           setValue={setSearchValue}
-        />
-
-        <Button 
-          icon={IoSearchOutline}
-          onClick={handleSearchBtnClick}
-          text=""
         />
       </div>
 
