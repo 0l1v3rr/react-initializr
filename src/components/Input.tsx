@@ -1,4 +1,6 @@
 import { Dispatch, FC, SetStateAction, useId } from "react";
+import { MdOutlineClear } from "react-icons/md";
+import HoverContainer from "./HoverContainer";
 
 interface InputProps {
   label: string,
@@ -25,11 +27,19 @@ const Input:FC<InputProps> = (props) => {
         value={props.value} 
         required={props.required} 
         className="w-full outline-none border-2 border-zinc-800 bg-zinc-900 
-          rounded-md px-2 py-1 border-react-active transition-all text-zinc-300 
-          placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none"
+          rounded-md pl-2 pr-6 py-1 border-react-active transition-all text-zinc-300 
+          placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
         onChange={(e) => props.setValue(e.target.value)}
         autoComplete="off"
       />
+
+      <button className="absolute top-1/2 -translate-y-1/2 cursor-pointer right-1 
+        color-react peer-focus:scale-100 peer-active:scale-100 scale-0 
+        transition-all duration-150" onClick={() => props.setValue("")} type="button">
+        <HoverContainer hoverText="Clear">
+            <MdOutlineClear />
+        </HoverContainer>
+      </button>
     </div>
   );
 }
