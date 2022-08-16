@@ -1,18 +1,21 @@
-# 📂 React Initializr
+<h1> 
 
-- [📂 React Initializr](#-react-initializr)
-  - [❓ What is React Initializr?](#-what-is-react-initializr)
-  - [❗ Important](#-important)
-  - [📚 Teach stack](#-teach-stack)
-  - [⚒️ Building from source](#️-building-from-source)
-  - [📝 License](#-license)
-  - [🧑‍🤝‍🧑 Contributing](#-contributing)
-  - [💡 Inspiration](#-inspiration)
+📂 React Initializr <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Pull Requests"></a> <a href="https://github.com/0l1v3rr/react-initializr/releases"><img src="https://img.shields.io/github/release/0l1v3rr/react-initializr.svg" alt="Relase"></a>
+
+</h1>
+
+- [❓ What is React Initializr?](#-what-is-react-initializr)
+- [❗ Important](#-important)
+- [📚 Teach stack](#-teach-stack)
+- [⚒️ Building from source](#️-building-from-source)
+- [📝 License](#-license)
+- [🧑‍🤝‍🧑 Contributing](#-contributing)
+- [💡 Inspiration](#-inspiration)
 
 <hr>
 
 ## ❓ What is React Initializr?
-• <a href="0l1v3rr.github.io/react-initializr" target="_blank">React Initializr</a> is a simple, easy-to-use, web-based, boilerplate-free project generator.  
+• <a href="https://0l1v3rr.github.io/react-initializr/" target="_blank">React Initializr</a> is a simple, easy-to-use, web-based, boilerplate-free project generator.  
 
 • Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templates without barely touching the terminal - just fill in some input fields, add your beloved dependencies, and generate your project!  
 
@@ -69,7 +72,7 @@ This process should only take a few minutes:
 <hr>
 
 ## 📝 License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 <hr>
 
