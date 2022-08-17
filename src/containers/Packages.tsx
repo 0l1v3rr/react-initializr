@@ -67,7 +67,11 @@ const Packages = () => {
   
   return (
     <div className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">
-      <Title text="Packages" />
+      <div className="font-semibold my-2 border-b-2 border-solid 
+      border-zinc-800 w-full pb-3 text-xl">
+        <span>Packages</span>
+        <span className="text-base text-zinc-500 italic"> ({packageArray.length} db)</span>
+      </div>
       
       <BlurOverlay isActive={isPackagePopupActive} />
       <PackagesPopup isActive={isPackagePopupActive} closePopup={() => setIsPackagePopupActive(false)} />
