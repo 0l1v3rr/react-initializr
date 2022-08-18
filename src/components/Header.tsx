@@ -97,7 +97,7 @@ const Header = () => {
     if(language.toLowerCase() === "typescript") {
       // tsconfig
       const tsconfig = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/tsconfig.json");
-      project?.file("tsconfig.json", tsconfig);
+      project?.file("tsconfig.json", JSON.stringify(tsconfig));
 
       // index
       const index = await readRemoteFile("https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/src/index.tsx");
