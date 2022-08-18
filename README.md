@@ -48,6 +48,7 @@ Shout-out to the creators for creating these tools:
 - [JSZip](https://stuk.github.io/jszip/)
 - [Recoil](https://recoiljs.org/)
 - [Tailwind](https://tailwindcss.com/)
+- [React GH Pages](https://github.com/gitname/react-gh-pages)
 
 <hr>
 
