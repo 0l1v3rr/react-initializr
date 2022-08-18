@@ -23,6 +23,7 @@ import axios from 'axios';
 
 const Header = () => {
   const [copyText, setCopyText] = useState("Copy Link");
+  const [genereateText, setGenerateText] = useState("Generate ZIP");
   
   const name = useRecoilValue(nameState);
   const version = useRecoilValue(versionState);
@@ -64,6 +65,8 @@ const Header = () => {
   };
 
   const generateZip = async () => {
+    setGenerateText("Generating...")
+
     // creating the ZIP and a folder to append the files
     const zip = new JSZip();
     const project = zip.folder(name);
@@ -110,6 +113,8 @@ const Header = () => {
     // donwloading the ZIP
     zip.generateAsync({ type: "blob" })
       .then(res => saveAs(res, `${name === "" ? "project" : name}.zip`));
+
+    setGenerateText("Generate ZIP")
   };
 
   const generatePackageJson = async () => {
@@ -221,7 +226,7 @@ const Header = () => {
 
       <div className="flex gap-3 items-center">
         <Button
-          text="Generate ZIP"
+          text={genereateText}
           icon={BsFileZip}
           onClick={generateZip}
         />
