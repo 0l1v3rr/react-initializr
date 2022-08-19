@@ -11,5 +11,5 @@ Please delete options that are not relevant.
 
 ## Checklist:
 - [ ] My code follows the style and structure of this project
-- [ ] I have made corresponding changes to the documentation
+- [ ] My code follows the principles of clean code
 - [ ] My changes generate no new warnings, bugs or errors

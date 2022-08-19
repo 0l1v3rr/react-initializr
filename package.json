@@ -7,6 +7,10 @@
     "imagePort": "3000",
     "internalContainerPort": "3000"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0l1v3rr/react-initializr.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

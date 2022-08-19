@@ -1,6 +1,6 @@
 <h1> 
 
-📂 React Initializr <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Pull Requests"></a> <a href="https://github.com/0l1v3rr/react-initializr/releases"><img src="https://img.shields.io/github/release/0l1v3rr/react-initializr.svg" alt="Relase"></a>
+📦 React Initializr <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="Pull Requests"></a> <a href="https://github.com/0l1v3rr/react-initializr/releases"><img src="https://img.shields.io/github/release/0l1v3rr/react-initializr.svg" alt="Relase"></a>
 
 </h1>
 
@@ -8,6 +8,7 @@
 - [❗ Important](#-important)
 - [📚 Teach stack](#-teach-stack)
 - [⚒️ Building from source](#️-building-from-source)
+- [🐋 Building with Docker](#-building-with-docker)
 - [📝 License](#-license)
 - [🧑‍🤝‍🧑 Contributing](#-contributing)
 - [💡 Inspiration](#-inspiration)
@@ -15,15 +16,15 @@
 <hr>
 
 ## ❓ What is React Initializr?
-• <a href="https://0l1v3rr.github.io/react-initializr/" target="_blank">React Initializr</a> is a simple, easy-to-use, web-based, boilerplate-free project generator.  
+<a href="https://0l1v3rr.github.io/react-initializr/" target="_blank">React Initializr</a> is a simple, easy-to-use, web-based, boilerplate-free project generator.  
 
-• Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templates without barely touching the terminal - just fill in some input fields, add your beloved dependencies, and generate your project!  
+Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templates without barely touching the terminal - just fill in some input fields, add your beloved dependencies, and generate your project!  
 
-• You can browse amongst every available npm package thanks to the <a href="https://github.com/npm/registry" target="_blank">NPM Registry API</a>.
+You can browse amongst every available npm package thanks to the <a href="https://github.com/npm/registry" target="_blank">NPM Registry API</a>.
 
-• If you prefer to use **TypeScript** you can totally do that too, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else.  
+If you prefer to use **TypeScript** you can totally do that too, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else.  
 
-• Share your project with others - if you're about to create a tutorial, a blog, a course, or something that requires sharing your *"starting point"* with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download exactly the same project as you did. Therefore you can almost skip the "generating project" phase.  
+Share your project with others - if you're about to create a tutorial, a blog, a course, or something that requires sharing your *"starting point"* with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.  
 **Example:** [https://0l1v3rr.github.io/react-initializr?name=my-project&version=1.0.0&description=This+is+my+cool+project&language=TypeScript&packages=axios%3Breact-icons%3Breact-router](https://0l1v3rr.github.io/react-initializr?name=my-project&version=1.0.0&description=This+is+my+cool+project&language=TypeScript&packages=axios%3Breact-icons%3Breact-router)
 
 <img src="./images/screenshot_1.png" alt="Screenshot">
@@ -53,22 +54,38 @@ Shout-out to the creators for creating these tools:
 <hr>
 
 ## ⚒️ Building from source
-This process should only take a few minutes:  
+If you don't have NodeJS, [download and install it](https://nodejs.org/en/).  
+Then open a terminal and type these commands:
+```sh
+# 1. Clone the project:
+git clone https://github.com/0l1v3rr/react-initializr.git
+cd react-initializr
 
-0. If you don't have NodeJS, [download and install it](https://nodejs.org/en/).
-1. Clone the project:
-    ```sh
-    git clone https://github.com/0l1v3rr/react-initializr.git
-    cd react-initializr
-    ```
-2. Install the required dependencies:
-    ```sh
-    npm i
-    ```
-3. Now, you can run the app:
-    ```sh
-    npm start
-    ```
+# 2. Install the dependencies:
+npm i
+
+# 3. Run the application:
+npm start
+``` 
+
+<hr>
+
+## 🐋 Building with Docker
+If you don't have Docker, make sure to [install it](https://www.docker.com/get-started/).  
+After cloning the repository, make the project's root directory active in your terminal and type these commands:
+```sh
+# 1. Build the Docker image
+npm run docker:build
+
+# 2. Docker tag (basically naming the image)
+npm run docker:tag
+
+# 3. Run the image
+npm run docker:run
+
+# Last, (Optional): Remove the image if you're done
+npm run docker:clean
+```
 
 <hr>
 
