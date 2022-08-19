@@ -13,29 +13,29 @@ interface InputProps {
 
 const Input:FC<InputProps> = (props) => {
   const id = `${props.label}-${useId()}`;
-  
+
   return (
     <div className="flex gap-2 items-center text-base relative my-2 w-full">
       <label htmlFor={id} className="whitespace-nowrap absolute bg-zinc-900 px-2 -top-4 left-2 color-react">
         {props.label}
       </label>
 
-      <input 
-        type={props.type} 
-        placeholder={props.placeholder} 
-        id={id} 
-        value={props.value} 
-        required={props.required} 
-        className="w-full outline-none border-2 border-zinc-800 bg-zinc-900 
-          rounded-md pl-2 pr-6 py-1 border-react-active transition-all text-zinc-300 
+      <input
+        type={props.type}
+        placeholder={props.placeholder}
+        id={id}
+        value={props.value}
+        required={props.required}
+        className="w-full outline-none border-2 border-zinc-800 bg-zinc-900
+          rounded-md pl-2 pr-6 py-1 border-react-active transition-all text-zinc-300
           placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
         onChange={(e) => props.setValue(e.target.value)}
         autoComplete="off"
       />
 
-      <button className="absolute top-1/2 -translate-y-1/2 cursor-pointer right-1 
-        color-react peer-focus:scale-100 peer-active:scale-100 scale-0 
-        transition-all duration-150" onClick={() => props.setValue("")} type="button">
+      <button className="absolute top-1/2 -translate-y-1/2 cursor-pointer right-1
+        color-react peer-focus:scale-100 peer-active:scale-100 scale-0
+        transition-all duration-150" onMouseDown={() => props.setValue("")} type="button">
         <HoverContainer hoverText="Clear">
             <MdOutlineClear />
         </HoverContainer>
