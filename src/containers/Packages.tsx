@@ -71,7 +71,7 @@ const Packages = () => {
       border-zinc-800 w-full pb-3 text-xl flex items-end gap-1">
         <span>Packages </span>
         <span className="text-base text-zinc-500 italic">
-          ({packageArray.filter(p => p.removeable).length} db)
+          ({packageArray.filter(p => p.removeable).length} selected)
         </span>
       </div>
       
