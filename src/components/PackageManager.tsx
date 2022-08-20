@@ -8,10 +8,10 @@ const PackageManager = () => {
 			<form className="flex flex-col mt-1">
 				<RadioInput 
 					checked={true} 
-          formName="manager" 
-          value="npm" 
-          state={pmState}
-        />
+					formName="manager" 
+					value="npm" 
+					state={pmState}
+				/>
 			</form>
 		</div>
 	);

@@ -20,8 +20,12 @@ import { useState } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import axios from 'axios';
+import BlurOverlay from './BlurOverlay';
+import ErrorPopup from './ErrorPopup';
 
 const Header = () => {
+  const [isValidatingPopupOpen, setIsValidatingPopupOpen] = useState(false);
+
   const [copyText, setCopyText] = useState("Copy Link");
   const [genereateText, setGenerateText] = useState("Generate ZIP");
   
@@ -65,6 +69,11 @@ const Header = () => {
   };
 
   const generateZip = async () => {
+    if(name.trim().length < 1) {
+      setIsValidatingPopupOpen(true);
+      return;
+    }
+
     setGenerateText("Generating...")
 
     // creating the ZIP and a folder to append the files
@@ -211,6 +220,14 @@ const Header = () => {
   return (
     <div className="flex items-center justify-center md:justify-between w-full h-fit border-b-2 border-solid 
       border-zinc-800 sm:px-12 px-4 py-4 sticky top-0 bg-zinc-900 shadow-md z-10">
+      
+      <BlurOverlay isActive={isValidatingPopupOpen} />
+      <ErrorPopup 
+        isActive={isValidatingPopupOpen} 
+        closePopup={() => setIsValidatingPopupOpen(false)}
+        message="The name of the project cannot be blank."
+      />
+      
       <div className="items-center text-2xl gap-2 cursor-pointer md:flex hidden">
         <img 
           className="w-12 animate-spin-slow" 
