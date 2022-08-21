@@ -1,15 +1,15 @@
-import { FC } from "react"
-import { IoCloseOutline } from "react-icons/io5"
+import { FC } from "react";
+import { IoCloseOutline } from "react-icons/io5";
 
 interface PopupProps {
-  isActive: boolean
-  closePopup: () => void
-  message: string
+  isActive: boolean;
+  closePopup: () => void;
+  message: string;
 }
 
 const ErrorPopup: FC<PopupProps> = (props) => {
-  const activeClasses = "opacity-100 pointer-events-auto scale-100"
-  const inactiveClasses = "opacity-0 pointer-events-none scale-0"
+  const activeClasses = "opacity-100 pointer-events-auto scale-100";
+  const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
   return (
     <div
@@ -39,7 +39,7 @@ const ErrorPopup: FC<PopupProps> = (props) => {
         {props.message}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorPopup
+export default ErrorPopup;

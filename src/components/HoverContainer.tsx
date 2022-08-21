@@ -1,8 +1,8 @@
-import { FC, ReactElement } from "react"
+import { FC, ReactElement } from "react";
 
 interface HoverContainerProps {
-  children: ReactElement
-  hoverText: string
+  children: ReactElement;
+  hoverText: string;
 }
 
 const HoverContainer: FC<HoverContainerProps> = ({ children, hoverText }) => {
@@ -23,7 +23,7 @@ const HoverContainer: FC<HoverContainerProps> = ({ children, hoverText }) => {
 
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default HoverContainer
+export default HoverContainer;

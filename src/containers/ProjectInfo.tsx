@@ -1,7 +1,7 @@
-import Languages from "../components/Languages"
-import PackageInformation from "../components/PackageInformation"
-import PackageManager from "../components/PackageManager"
-import Title from "../components/Title"
+import Languages from "../components/Languages";
+import PackageInformation from "../components/PackageInformation";
+import PackageManager from "../components/PackageManager";
+import Title from "../components/Title";
 
 const ProjectInfo = () => {
   return (
@@ -18,7 +18,7 @@ const ProjectInfo = () => {
 
       <PackageInformation />
     </div>
-  )
-}
+  );
+};
 
-export default ProjectInfo
+export default ProjectInfo;

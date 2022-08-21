@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from "react";
 
 interface TitleProps {
-  text: string
+  text: string;
 }
 
 const Title: FC<TitleProps> = ({ text }) => {
@@ -12,7 +12,7 @@ const Title: FC<TitleProps> = ({ text }) => {
     >
       {text}
     </div>
-  )
-}
+  );
+};
 
-export default Title
+export default Title;

@@ -1,25 +1,25 @@
-import axios from "axios"
-import { FC, useEffect, useState } from "react"
+import axios from "axios";
+import { FC, useEffect, useState } from "react";
 
-import { IoCloseOutline } from "react-icons/io5"
-import { useRecoilValue } from "recoil"
-import { packagesArrayState } from "../atoms"
-import Input from "./Input"
-import SearchItem from "./SearchItem"
+import { IoCloseOutline } from "react-icons/io5";
+import { useRecoilValue } from "recoil";
+import { packagesArrayState } from "../atoms";
+import Input from "./Input";
+import SearchItem from "./SearchItem";
 
 interface PopupProps {
-  isActive: boolean
-  closePopup: () => void
+  isActive: boolean;
+  closePopup: () => void;
 }
 
 const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
-  const [searchValue, setSearchValue] = useState("")
-  const [currentPackages, setCurrentPackages] = useState<any[]>([])
+  const [searchValue, setSearchValue] = useState("");
+  const [currentPackages, setCurrentPackages] = useState<any[]>([]);
 
-  const packageArray = useRecoilValue(packagesArrayState)
+  const packageArray = useRecoilValue(packagesArrayState);
 
-  const activeClasses = "opacity-100 pointer-events-auto scale-100"
-  const inactiveClasses = "opacity-0 pointer-events-none scale-0"
+  const activeClasses = "opacity-100 pointer-events-auto scale-100";
+  const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
   useEffect(() => {
     if (searchValue.length > 3) {
@@ -28,23 +28,23 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
           `https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`
         )
         .then((res) => {
-          const resArr: any[] = []
+          const resArr: any[] = [];
 
           for (let i of res.data.objects) {
             if (
               !packageArray.map((p) => p.packageName).includes(i.package.name)
             ) {
-              resArr.push(i)
+              resArr.push(i);
             }
           }
 
-          setCurrentPackages(resArr)
+          setCurrentPackages(resArr);
         })
-        .catch(() => setCurrentPackages([]))
+        .catch(() => setCurrentPackages([]));
     } else {
-      setCurrentPackages([])
+      setCurrentPackages([]);
     }
-  }, [searchValue])
+  }, [searchValue]);
 
   return (
     <div
@@ -105,11 +105,11 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
                   version: (p as any).package.version,
                 }}
               />
-            )
+            );
           })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PackagesPopup
+export default PackagesPopup;

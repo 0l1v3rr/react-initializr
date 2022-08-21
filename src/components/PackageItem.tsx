@@ -1,33 +1,33 @@
-import { FC } from "react"
-import { Package } from "../types"
+import { FC } from "react";
+import { Package } from "../types";
 
-import { AiOutlineDelete } from "react-icons/ai"
-import { useSetRecoilState } from "recoil"
-import { packagesArrayState } from "../atoms"
+import { AiOutlineDelete } from "react-icons/ai";
+import { useSetRecoilState } from "recoil";
+import { packagesArrayState } from "../atoms";
 
 interface PackageItemProps {
-  package: Package
+  package: Package;
 }
 
 const PackageItem: FC<PackageItemProps> = (props) => {
-  const setPackageArray = useSetRecoilState(packagesArrayState)
+  const setPackageArray = useSetRecoilState(packagesArrayState);
 
   const handleDeleteClick = () => {
     setPackageArray((prev) => {
-      const res: Package[] = []
+      const res: Package[] = [];
 
       for (const p of prev) {
         if (
           p.packageName.toLowerCase() !==
           props.package.packageName.toLowerCase()
         ) {
-          res.push(p)
+          res.push(p);
         }
       }
 
-      return res
-    })
-  }
+      return res;
+    });
+  };
 
   return (
     <div className="w-full border-2 border-solid border-zinc-800 my-1 shadow-sm px-3 py-1 rounded-md">
@@ -66,7 +66,7 @@ const PackageItem: FC<PackageItemProps> = (props) => {
         {props.package.description}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PackageItem
+export default PackageItem;

@@ -1,10 +1,10 @@
-import { FC } from "react"
-import { IconType } from "react-icons/lib"
+import { FC } from "react";
+import { IconType } from "react-icons/lib";
 
 interface ButtonProps {
-  text: string
-  icon: IconType
-  onClick: () => void
+  text: string;
+  icon: IconType;
+  onClick: () => void;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = (props) => {
         <span className="text-zinc-200">{props.text.toUpperCase()}</span>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

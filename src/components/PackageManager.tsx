@@ -1,5 +1,5 @@
-import RadioInput from "./RadioInput"
-import { pmState } from "../atoms"
+import RadioInput from "./RadioInput";
+import { pmState } from "../atoms";
 
 const PackageManager = () => {
   return (
@@ -14,7 +14,7 @@ const PackageManager = () => {
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default PackageManager
+export default PackageManager;

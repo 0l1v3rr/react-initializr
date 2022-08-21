@@ -1,28 +1,28 @@
-import Button from "../components/Button"
-import Title from "../components/Title"
+import Button from "../components/Button";
+import Title from "../components/Title";
 
-import { FiPackage } from "react-icons/fi"
-import { BsEyeSlash, BsEye } from "react-icons/bs"
-import { useRecoilState } from "recoil"
+import { FiPackage } from "react-icons/fi";
+import { BsEyeSlash, BsEye } from "react-icons/bs";
+import { useRecoilState } from "recoil";
 
-import { packagesArrayState } from "../atoms"
-import PackageItem from "../components/PackageItem"
-import { useEffect, useState } from "react"
-import BlurOverlay from "../components/BlurOverlay"
-import PackagesPopup from "../components/PackagesPopup"
-import axios from "axios"
-import { Package } from "../types"
-import HoverContainer from "../components/HoverContainer"
+import { packagesArrayState } from "../atoms";
+import PackageItem from "../components/PackageItem";
+import { useEffect, useState } from "react";
+import BlurOverlay from "../components/BlurOverlay";
+import PackagesPopup from "../components/PackagesPopup";
+import axios from "axios";
+import { Package } from "../types";
+import HoverContainer from "../components/HoverContainer";
 
 const Packages = () => {
-  const [packageArray, setPackageArray] = useRecoilState(packagesArrayState)
-  const [isPackagePopupActive, setIsPackagePopupActive] = useState(false)
-  const [isDefaultPackagesHidden, setIsDefaultPackagesHidden] = useState(true)
+  const [packageArray, setPackageArray] = useRecoilState(packagesArrayState);
+  const [isPackagePopupActive, setIsPackagePopupActive] = useState(false);
+  const [isDefaultPackagesHidden, setIsDefaultPackagesHidden] = useState(true);
 
   useEffect(() => {
     // parsing the query params from the url
-    const params = new URLSearchParams(window.location.search)
-    const packagesParam = params.get("packages")
+    const params = new URLSearchParams(window.location.search);
+    const packagesParam = params.get("packages");
 
     // default packages
     const defaultPackages = [
@@ -32,15 +32,15 @@ const Packages = () => {
       "@testing-library/user-event",
       "@testing-library/react",
       "@testing-library/jest-dom",
-    ]
+    ];
 
-    let packages = [...defaultPackages]
+    let packages = [...defaultPackages];
 
     // appending the packages coming from the url
     // if it's null, then we only have the default packages
     if (packagesParam !== null) {
       for (const i of packagesParam.split(";")) {
-        packages.push(i)
+        packages.push(i);
       }
     }
 
@@ -53,16 +53,16 @@ const Packages = () => {
           description: res.data.description,
           removeable: !defaultPackages.includes(res.data.name),
           version: res.data.version,
-        }
+        };
 
         // appending it to our packages array
-        setPackageArray((prev) => [...prev, r])
-      })
+        setPackageArray((prev) => [...prev, r]);
+      });
     }
 
     // cleaning up the array
-    return () => setPackageArray([])
-  }, [])
+    return () => setPackageArray([]);
+  }, []);
 
   return (
     <div className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">
@@ -104,13 +104,13 @@ const Packages = () => {
 
       {packageArray.map((p) => {
         if (isDefaultPackagesHidden && !p.removeable) {
-          return null
+          return null;
         }
 
-        return <PackageItem key={p.packageName} package={p} />
+        return <PackageItem key={p.packageName} package={p} />;
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Packages
+export default Packages;

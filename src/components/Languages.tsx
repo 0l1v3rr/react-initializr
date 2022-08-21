@@ -1,10 +1,10 @@
-import RadioInput from "./RadioInput"
-import { languageState } from "../atoms"
+import RadioInput from "./RadioInput";
+import { languageState } from "../atoms";
 
 const Languages = () => {
   // parsing the query parameters
-  const params = new URLSearchParams(window.location.search)
-  const language = params.get("language")
+  const params = new URLSearchParams(window.location.search);
+  const language = params.get("language");
 
   return (
     <div>
@@ -25,7 +25,7 @@ const Languages = () => {
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Languages
+export default Languages;

@@ -1,15 +1,15 @@
-import { FC, useState } from "react"
-import { useSetRecoilState } from "recoil"
-import { packagesArrayState } from "../atoms"
-import { Package } from "../types"
+import { FC, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { packagesArrayState } from "../atoms";
+import { Package } from "../types";
 
 interface PackageItemProps {
-  package: Package
+  package: Package;
 }
 
 const SearchItem: FC<PackageItemProps> = (props) => {
-  const setPackageArray = useSetRecoilState(packagesArrayState)
-  const [isAdded, setIsAdded] = useState(false)
+  const setPackageArray = useSetRecoilState(packagesArrayState);
+  const [isAdded, setIsAdded] = useState(false);
 
   return (
     <div
@@ -17,8 +17,8 @@ const SearchItem: FC<PackageItemProps> = (props) => {
       px-3 py-1 rounded-md cursor-pointer transition-all duration-100 hover:border-zinc-700 
       hover:bg-zinc-800 hover:scale-[101%] ${isAdded && "hidden"}`}
       onClick={() => {
-        setPackageArray((prev) => [...prev, props.package])
-        setIsAdded(true)
+        setPackageArray((prev) => [...prev, props.package]);
+        setIsAdded(true);
       }}
     >
       <div className="flex items-center justify-between">
@@ -35,7 +35,7 @@ const SearchItem: FC<PackageItemProps> = (props) => {
         {props.package.description}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchItem
+export default SearchItem;

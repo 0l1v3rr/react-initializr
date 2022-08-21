@@ -1,10 +1,10 @@
-import { FC } from "react"
-import { IconType } from "react-icons/lib"
+import { FC } from "react";
+import { IconType } from "react-icons/lib";
 
 interface ButtonLinkProps {
-  text: string
-  icon: IconType
-  to: string
+  text: string;
+  icon: IconType;
+  to: string;
 }
 
 const ButtonLink: FC<ButtonLinkProps> = (props) => {
@@ -22,7 +22,7 @@ const ButtonLink: FC<ButtonLinkProps> = (props) => {
 
       <span className="text-zinc-200">{props.text.toUpperCase()}</span>
     </a>
-  )
-}
+  );
+};
 
-export default ButtonLink
+export default ButtonLink;

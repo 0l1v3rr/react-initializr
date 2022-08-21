@@ -1,18 +1,18 @@
-import { Dispatch, FC, SetStateAction, useId } from "react"
-import { MdOutlineClear } from "react-icons/md"
-import HoverContainer from "./HoverContainer"
+import { Dispatch, FC, SetStateAction, useId } from "react";
+import { MdOutlineClear } from "react-icons/md";
+import HoverContainer from "./HoverContainer";
 
 interface InputProps {
-  label: string
-  placeholder: string
-  value: string
-  setValue: Dispatch<SetStateAction<any>>
-  type: "text" | "password" | "number" | "url"
-  required: boolean
+  label: string;
+  placeholder: string;
+  value: string;
+  setValue: Dispatch<SetStateAction<any>>;
+  type: "text" | "password" | "number" | "url";
+  required: boolean;
 }
 
 const Input: FC<InputProps> = (props) => {
-  const id = `${props.label}-${useId()}`
+  const id = `${props.label}-${useId()}`;
 
   return (
     <div className="flex gap-2 items-center text-base relative my-2 w-full">
@@ -48,7 +48,7 @@ const Input: FC<InputProps> = (props) => {
         </HoverContainer>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
