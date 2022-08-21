@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import Packages from "./containers/Packages";
-import ProjectInfo from "./containers/ProjectInfo";
+import Header from "./components/Header"
+import Packages from "./containers/Packages"
+import ProjectInfo from "./containers/ProjectInfo"
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <Packages />
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

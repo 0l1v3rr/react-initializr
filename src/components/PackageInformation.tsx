@@ -1,54 +1,55 @@
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
-import Input from "./Input";
+import { useEffect } from "react"
+import { useRecoilState } from "recoil"
+import Input from "./Input"
 
-import { 
-  nameState, 
-  versionState, 
-  descriptionState, 
-  gitRepoState, 
-  authorState, 
-  licenseState 
-} from "../atoms";
+import {
+  nameState,
+  versionState,
+  descriptionState,
+  gitRepoState,
+  authorState,
+  licenseState,
+} from "../atoms"
 
 const PackageInformation = () => {
   // default form values with recoil states
-  const [name, setName] = useRecoilState(nameState);
-  const [version, setVersion] = useRecoilState(versionState);
-  const [description, setDescription] = useRecoilState(descriptionState);
-  const [gitRepo, setGitRepo] = useRecoilState(gitRepoState);
-  const [author, setAuthor] = useRecoilState(authorState);
-  const [license, setLicense] = useRecoilState(licenseState);
+  const [name, setName] = useRecoilState(nameState)
+  const [version, setVersion] = useRecoilState(versionState)
+  const [description, setDescription] = useRecoilState(descriptionState)
+  const [gitRepo, setGitRepo] = useRecoilState(gitRepoState)
+  const [author, setAuthor] = useRecoilState(authorState)
+  const [license, setLicense] = useRecoilState(licenseState)
 
   // overriding the state value if the query param is not null
   useEffect(() => {
     // parsing the query parameters
-    const params = new URLSearchParams(window.location.search);
-    
-    const pName = params.get("name");
-    const pVersion = params.get("version");
-    const pDescription = params.get("description");
-    const pRepo = params.get("repository");
-    const pAuthor = params.get("author");
-    const pLicense = params.get("license");
-    
-    if(pName !== null) setName(pName);
-    if(pVersion !== null) setVersion(pVersion);
-    if(pDescription !== null) setDescription(pDescription);
-    if(pRepo !== null) setGitRepo(pRepo);
-    if(pAuthor !== null) setAuthor(pAuthor);
-    if(pLicense !== null) setLicense(pLicense);
-  }, []);
+    const params = new URLSearchParams(window.location.search)
+
+    const pName = params.get("name")
+    const pVersion = params.get("version")
+    const pDescription = params.get("description")
+    const pRepo = params.get("repository")
+    const pAuthor = params.get("author")
+    const pLicense = params.get("license")
+
+    if (pName !== null) setName(pName)
+    if (pVersion !== null) setVersion(pVersion)
+    if (pDescription !== null) setDescription(pDescription)
+    if (pRepo !== null) setGitRepo(pRepo)
+    if (pAuthor !== null) setAuthor(pAuthor)
+    if (pLicense !== null) setLicense(pLicense)
+  }, [])
 
   // converting the name into kebab-case.
-  const convertToKebabCase = (s: string): string => s.toLowerCase().split(" ").join("-");
-  useEffect(() => setName(convertToKebabCase(name)), [name]);
-  
+  const convertToKebabCase = (s: string): string =>
+    s.toLowerCase().split(" ").join("-")
+  useEffect(() => setName(convertToKebabCase(name)), [name])
+
   return (
     <form className="mt-5 flex flex-col gap-2">
       <div className="font-semibold italic">Project information</div>
-      
-      <Input 
+
+      <Input
         label="Name"
         placeholder="my-project"
         type="text"
@@ -57,7 +58,7 @@ const PackageInformation = () => {
         required={true}
       />
 
-      <Input 
+      <Input
         label="Description"
         placeholder="This is my super cool project."
         type="text"
@@ -66,7 +67,7 @@ const PackageInformation = () => {
         required={false}
       />
 
-      <Input 
+      <Input
         label="Version"
         placeholder="1.0.0"
         type="text"
@@ -75,7 +76,7 @@ const PackageInformation = () => {
         required={true}
       />
 
-      <Input 
+      <Input
         label="Git Repository"
         placeholder="https://github.com/myUsername/my-repository"
         type="url"
@@ -84,7 +85,7 @@ const PackageInformation = () => {
         required={false}
       />
 
-      <Input 
+      <Input
         label="Author"
         placeholder="John Doe"
         type="text"
@@ -93,7 +94,7 @@ const PackageInformation = () => {
         required={false}
       />
 
-      <Input 
+      <Input
         label="License"
         placeholder="MIT"
         type="text"
@@ -102,7 +103,7 @@ const PackageInformation = () => {
         required={true}
       />
     </form>
-  );
+  )
 }
 
-export default PackageInformation;
+export default PackageInformation
