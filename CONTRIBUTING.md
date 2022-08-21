@@ -45,7 +45,7 @@ If there's an issue you want to fix or develop, or you opened an issue as a feat
 2. Clone your fork
 3. Start working on your changes
 4. Commit and push your changes
-5. Open a Pull Request with the changes you made, and write a few words about it. There is a fancy pull request template to follow. ;)
+5. Open a Pull Request with the changes you made
 
 ### Other ways
 
@@ -61,3 +61,4 @@ If you currently don't have any ideas in mind but want to support the project:
 
 - You can open the pull request directly against the main branch.
 - You don't need to build or deploy (`npm run build`, `npm run deploy`) the project.
+- If possible, please use the [pull request template](./.github/PULL_REQUEST_TEMPLATE.md) when you open a PR.
