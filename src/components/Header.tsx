@@ -12,6 +12,7 @@ import {
   licenseState,
   languageState,
   packagesArrayState,
+  homepageState
 } from "../atoms";
 
 import Button from "./Button";
@@ -37,6 +38,7 @@ const Header = () => {
   const license = useRecoilValue(licenseState);
   const language = useRecoilValue(languageState);
   const packages = useRecoilValue(packagesArrayState);
+  const homepage = useRecoilValue(homepageState);
 
   const copyLink = () => {
     // building the URL to copy
@@ -49,6 +51,7 @@ const Header = () => {
     if (gitRepo.trim() !== "") params.append("repository", gitRepo);
     if (author.trim() !== "") params.append("author", author);
     if (license.trim() !== "") params.append("license", license);
+    if (homepage.trim() !== "") params.append("homepage", homepage);
     params.append("language", language);
 
     const nonDefaultPackages = packages.filter((p) => p.removeable);
