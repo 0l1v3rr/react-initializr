@@ -31,6 +31,11 @@ export const licenseState = atom({
   default: "MIT",
 });
 
+export const homepageState = atom({
+  key: "homepage",
+  default: "",
+});
+
 export const languageState = atom({
   key: "language",
   default: "JavaScript",

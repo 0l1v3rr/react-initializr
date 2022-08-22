@@ -9,6 +9,7 @@ import {
   gitRepoState,
   authorState,
   licenseState,
+  homepageState
 } from "../atoms";
 
 const PackageInformation = () => {
@@ -19,6 +20,7 @@ const PackageInformation = () => {
   const [gitRepo, setGitRepo] = useRecoilState(gitRepoState);
   const [author, setAuthor] = useRecoilState(authorState);
   const [license, setLicense] = useRecoilState(licenseState);
+  const [homepage, setHomepage] = useRecoilState(homepageState);
 
   // overriding the state value if the query param is not null
   useEffect(() => {
@@ -31,6 +33,7 @@ const PackageInformation = () => {
     const pRepo = params.get("repository");
     const pAuthor = params.get("author");
     const pLicense = params.get("license");
+    const pHomepage = params.get("homepage");
 
     if (pName !== null) setName(pName);
     if (pVersion !== null) setVersion(pVersion);
@@ -38,6 +41,7 @@ const PackageInformation = () => {
     if (pRepo !== null) setGitRepo(pRepo);
     if (pAuthor !== null) setAuthor(pAuthor);
     if (pLicense !== null) setLicense(pLicense);
+    if (pHomepage !== null) setHomepage(pHomepage);
   }, []);
 
   // converting the name into kebab-case.
@@ -91,6 +95,15 @@ const PackageInformation = () => {
         type="text"
         value={author}
         setValue={setAuthor}
+        required={false}
+      />
+
+      <Input
+        label="Homepage"
+        placeholder="https://username.github.io/project"
+        type="text"
+        value={homepage}
+        setValue={setHomepage}
         required={false}
       />
 
