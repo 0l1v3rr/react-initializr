@@ -9,7 +9,7 @@ import {
   gitRepoState,
   authorState,
   licenseState,
-  homepageState
+  homepageState,
 } from "../atoms";
 
 const PackageInformation = () => {

@@ -12,7 +12,7 @@ import {
   licenseState,
   languageState,
   packagesArrayState,
-  homepageState
+  homepageState,
 } from "../atoms";
 
 import Button from "./Button";
@@ -209,6 +209,7 @@ const Header = () => {
     if (description !== "") result.description = description;
     if (author !== "") result.author = author;
     if (license !== "") result.license = license;
+    if (homepage !== "") result.homepage = homepage;
 
     if (gitRepo !== "") {
       result.repository = {
