@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
+import { convertToKebabCase } from "../utils";
 import Input from "./Input";
 
 import {
@@ -45,12 +46,10 @@ const PackageInformation = () => {
   }, []);
 
   // converting the name into kebab-case.
-  const convertToKebabCase = (s: string): string =>
-    s.toLowerCase().split(" ").join("-");
   useEffect(() => setName(convertToKebabCase(name)), [name]);
 
   return (
-    <form className="mt-5 flex flex-col gap-2">
+    <section className="mt-5 flex flex-col gap-2">
       <div className="font-semibold italic">Project information</div>
 
       <Input
@@ -115,7 +114,7 @@ const PackageInformation = () => {
         setValue={setLicense}
         required={true}
       />
-    </form>
+    </section>
   );
 };
 

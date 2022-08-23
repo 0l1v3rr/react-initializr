@@ -3,7 +3,7 @@ import { pmState } from "../atoms";
 
 const PackageManager = () => {
   return (
-    <div>
+    <section>
       <div className="font-semibold italic">Package manager</div>
       <form className="flex flex-col mt-1">
         <RadioInput
@@ -13,7 +13,7 @@ const PackageManager = () => {
           state={pmState}
         />
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -65,7 +65,7 @@ const Packages = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">
+    <section className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">
       <div
         className="font-semibold my-2 border-b-2 border-solid 
       border-zinc-800 w-full pb-3 text-xl flex items-end gap-1"
@@ -109,7 +109,7 @@ const Packages = () => {
 
         return <PackageItem key={p.packageName} package={p} />;
       })}
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const Languages = () => {
   const language = params.get("language");
 
   return (
-    <div>
+    <section>
       <div className="font-semibold italic">Language</div>
       <form className="flex flex-col mt-1">
         <RadioInput
@@ -24,7 +24,7 @@ const Languages = () => {
           state={languageState}
         />
       </form>
-    </div>
+    </section>
   );
 };
 
