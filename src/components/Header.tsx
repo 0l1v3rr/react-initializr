@@ -20,9 +20,9 @@ import ButtonLink from "./ButtonLink";
 import { useCallback, useEffect, useState } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
-import axios from "axios";
 import BlurOverlay from "./BlurOverlay";
 import ErrorPopup from "./ErrorPopup";
+import { getLatestDependencyVersion, readRemoteFile } from "../utils";
 
 const Header = () => {
   const [isValidatingPopupOpen, setIsValidatingPopupOpen] = useState(false);
@@ -43,7 +43,7 @@ const Header = () => {
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     // check if the Shift key is pressed
     if (event.shiftKey === true) {
-      switch(event.key) {
+      switch (event.key) {
         case "G":
           generateZip();
           break;
@@ -59,10 +59,10 @@ const Header = () => {
 
   useEffect(() => {
     // attach the event listener
-    document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener("keydown", handleKeyPress);
 
     // remove the event listener
-    return () => document.removeEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress);
   }, [handleKeyPress]);
 
   const copyLink = () => {
@@ -248,22 +248,6 @@ const Header = () => {
 
     // converting the object to a JSON
     return JSON.stringify(result, null, 2);
-  };
-
-  const readRemoteFile = async (url: string) => {
-    let res = "";
-    await axios.get(url).then((r) => (res = r.data));
-    return res;
-  };
-
-  const getLatestDependencyVersion = async (name: string) => {
-    let version = "";
-
-    await axios.get(`https://registry.npmjs.org/${name}/latest`).then((res) => {
-      version = res.data.version;
-    });
-
-    return version;
   };
 
   return (
