@@ -17,7 +17,7 @@ import {
 
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import axios from "axios";
@@ -39,6 +39,31 @@ const Header = () => {
   const language = useRecoilValue(languageState);
   const packages = useRecoilValue(packagesArrayState);
   const homepage = useRecoilValue(homepageState);
+
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    // check if the Shift key is pressed
+    if (event.shiftKey === true) {
+      switch(event.key) {
+        case "G":
+          generateZip();
+          break;
+        case "C":
+          copyLink();
+          break;
+        case "S":
+          window.open("https://github.com/0l1v3rr/react-initializr", "_blank");
+          break;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // remove the event listener
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, [handleKeyPress]);
 
   const copyLink = () => {
     // building the URL to copy
