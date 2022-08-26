@@ -46,7 +46,7 @@ const PackageInformation = () => {
   }, []);
 
   // converting the name into kebab-case
-  useEffect(() => setName(prev => convertToKebabCase(prev)), [name]);
+  useEffect(() => setName((prev) => convertToKebabCase(prev)), [name]);
 
   return (
     <section className="mt-5 flex flex-col gap-2">

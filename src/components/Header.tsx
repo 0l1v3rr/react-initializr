@@ -46,10 +46,10 @@ const Header = () => {
     }
 
     // if the target is an input, we should not trigger the event
-    if((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
+    if ((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
       return;
     }
-    
+
     // check if the Shift key is pressed
     if (event.shiftKey) {
       switch (event.key) {

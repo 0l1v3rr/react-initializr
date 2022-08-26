@@ -26,7 +26,7 @@ You can browse amongst every available npm package thanks to the <a href="https:
 
 If you prefer to use **TypeScript** you can totally do that too, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else.
 
-Share your project with others - if you're about to create a tutorial, a blog, a course, or something that requires sharing your _"starting point"_ with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.  
+Share your project with others - if you're about to create a tutorial, a blog, a course, or something that requires sharing your _"starting point"_ with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.
 
 <img src="./images/screenshot_1.png" alt="Screenshot">
 
@@ -42,12 +42,14 @@ Share your project with others - if you're about to create a tutorial, a blog, a
 <hr>
 
 ## ⌨️ Hotkeys
+
 In order to make the site more convenient, you can use some keyboard shortcuts.  
 **These shortcuts are the following:**
-* <kbd>Shift</kbd> + <kbd>G</kbd> - Generates the project
-* <kbd>Shift</kbd> + <kbd>C</kbd> - Copies the link you can share with others
-* <kbd>Shift</kbd> + <kbd>S</kbd> - Navigates you to this GitHub page
-* <kbd>Shift</kbd> + <kbd>P</kbd> - Opens the packages popup window
+
+- <kbd>Shift</kbd> + <kbd>G</kbd> - Generates the project
+- <kbd>Shift</kbd> + <kbd>C</kbd> - Copies the link you can share with others
+- <kbd>Shift</kbd> + <kbd>S</kbd> - Navigates you to this GitHub page
+- <kbd>Shift</kbd> + <kbd>P</kbd> - Opens the packages popup window
 
 <hr>
 

@@ -24,7 +24,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
 
   useEffect(() => {
     // converting the input value into kebab-case
-    setSearchValue(prev => convertToKebabCase(prev));
+    setSearchValue((prev) => convertToKebabCase(prev));
 
     // only serach for packages if the length of the term is greater than 3
     if (searchValue.length > 3) {
