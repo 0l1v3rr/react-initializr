@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
 import { packagesArrayState } from "../atoms";
+import { convertToKebabCase } from "../utils";
 import Input from "./Input";
 import SearchItem from "./SearchItem";
 
@@ -22,6 +23,10 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
   const inactiveClasses = "opacity-0 pointer-events-none scale-0";
 
   useEffect(() => {
+    // converting the input value into kebab-case
+    setSearchValue(prev => convertToKebabCase(prev));
+
+    // only serach for packages if the length of the term is greater than 3
     if (searchValue.length > 3) {
       axios
         .get(

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*, *::before, *::after {
+  outline: none;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }

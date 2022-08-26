@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 
 import { packagesArrayState } from "../atoms";
 import PackageItem from "../components/PackageItem";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BlurOverlay from "../components/BlurOverlay";
 import PackagesPopup from "../components/PackagesPopup";
 import axios from "axios";
@@ -63,6 +63,34 @@ const Packages = () => {
     // cleaning up the array
     return () => setPackageArray([]);
   }, []);
+
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.isComposing || event.repeat) {
+      return;
+    }
+
+    // if the target is an input, we should not trigger the event
+    if((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
+      return;
+    }
+    
+    // check if the Shift key is pressed
+    if (event.shiftKey) {
+      switch (event.key) {
+        case "P":
+          setIsPackagePopupActive(prev => !prev);
+          break;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener("keydown", handleKeyPress);
+
+    // remove the event listener
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [handleKeyPress]);
 
   return (
     <section className="flex flex-col md:w-[50%] w-full md:px-10 px-5 py-5 min-h-full">

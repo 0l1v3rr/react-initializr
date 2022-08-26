@@ -41,8 +41,17 @@ const Header = () => {
   const homepage = useRecoilValue(homepageState);
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.isComposing || event.repeat) {
+      return;
+    }
+
+    // if the target is an input, we should not trigger the event
+    if((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
+      return;
+    }
+    
     // check if the Shift key is pressed
-    if (event.shiftKey === true) {
+    if (event.shiftKey) {
       switch (event.key) {
         case "G":
           generateZip();
