@@ -50,6 +50,7 @@ In order to make the site more convenient, you can use some keyboard shortcuts.
 - <kbd>Shift</kbd> + <kbd>C</kbd> - Copies the link you can share with others
 - <kbd>Shift</kbd> + <kbd>S</kbd> - Navigates you to this GitHub page
 - <kbd>Shift</kbd> + <kbd>P</kbd> - Opens the packages popup window
+- <kbd>Shift</kbd> + <kbd>D</kbd> - Deletes the added dependencies (except for the default ones)
 
 <hr>
 

@@ -80,6 +80,9 @@ const Packages = () => {
         case "P":
           setIsPackagePopupActive((prev) => !prev);
           break;
+        case "D":
+          setPackageArray((prev) => prev.filter((p) => !p.removeable));
+          break;
       }
     }
   }, []);
