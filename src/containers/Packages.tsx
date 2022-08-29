@@ -133,13 +133,21 @@ const Packages = () => {
         </HoverContainer>
       </div>
 
-      {packageArray.map((p) => {
-        if (isDefaultPackagesHidden && !p.removeable) {
-          return null;
-        }
+      {[...packageArray]
+        .sort((a, b) =>
+          a.packageName > b.packageName
+            ? 1
+            : b.packageName > a.packageName
+            ? -1
+            : 0
+        )
+        .map((p) => {
+          if (isDefaultPackagesHidden && !p.removeable) {
+            return null;
+          }
 
-        return <PackageItem key={p.packageName} package={p} />;
-      })}
+          return <PackageItem key={p.packageName} package={p} />;
+        })}
     </section>
   );
 };
