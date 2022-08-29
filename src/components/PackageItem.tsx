@@ -42,19 +42,13 @@ const PackageItem: FC<PackageItemProps> = (props) => {
           {props.package.packageName}
           <span className="font-light text-zinc-400 text-base">
             {" "}
-            ({props.package.version})
+            ({props.package.removeable ? props.package.version : "Default"})
           </span>
         </a>
 
         {props.package.removeable && (
           <button
-            className={`transition-all duration-200 
-          ${
-            props.package.removeable
-              ? "hover:text-red-500 cursor-pointer hover:scale-110"
-              : "text-zinc-500 cursor-not-allowed"
-          }`}
-            disabled={!props.package.removeable}
+            className="transition-all duration-200 hover:text-red-500 cursor-pointer hover:scale-110"
             onClick={handleDeleteClick}
           >
             <AiOutlineDelete />
