@@ -51,6 +51,7 @@ In order to make the site more convenient, you can use some keyboard shortcuts.
 - <kbd>Shift</kbd> + <kbd>S</kbd> - Navigates you to this GitHub page
 - <kbd>Shift</kbd> + <kbd>P</kbd> - Opens the packages popup window
 - <kbd>Shift</kbd> + <kbd>D</kbd> - Deletes the added dependencies (except for the default ones)
+- <kbd>Shift</kbd> + <kbd>L</kbd> - Resets the project information to default
 
 <hr>
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { convertToKebabCase } from "../utils";
 import Input from "./Input";
@@ -47,6 +47,41 @@ const PackageInformation = () => {
 
   // converting the name into kebab-case
   useEffect(() => setName((prev) => convertToKebabCase(prev)), [name]);
+
+  // hotkeys
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.isComposing || event.repeat) {
+      return;
+    }
+
+    // if the target is an input, we should not trigger the event
+    if ((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
+      return;
+    }
+
+    // check if the Shift key is pressed
+    if (event.shiftKey) {
+      switch (event.key) {
+        case "L":
+          setName("my-project");
+          setVersion("1.0.0");
+          setDescription("");
+          setGitRepo("");
+          setAuthor("");
+          setLicense("MIT");
+          setHomepage("");
+          break;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener("keydown", handleKeyPress);
+
+    // remove the event listener
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [handleKeyPress]);
 
   return (
     <section className="mt-5 flex flex-col gap-2">
