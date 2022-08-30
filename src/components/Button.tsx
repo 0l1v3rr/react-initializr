@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IconType } from "react-icons/lib";
+import { convertToKebabCase } from "../utils";
 
 interface ButtonProps {
   text: string;
@@ -15,6 +16,7 @@ const Button: FC<ButtonProps> = (props) => {
       border-solid border-zinc-800 rounded-md flex items-center justify-center 
       gap-2 leading-7 hover:border-zinc-700 color-react-hover hover:bg-white/[0.04] 
       transition-all hover:scale-[103%] hover:shadow-md text-[1em]"
+      aria-label={convertToKebabCase(props.text)}
     >
       <props.icon />
 
