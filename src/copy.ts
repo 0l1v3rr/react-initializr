@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Package, Project } from "./types";
+import { Project } from "./types";
 
 export const copyLink = (
   setCopyText: Dispatch<SetStateAction<string>>,
@@ -30,7 +30,7 @@ export const copyLink = (
   if (homepage.trim() !== "") params.append("homepage", homepage);
   params.append("language", language);
 
-  const nonDefaultPackages = packages.filter((p) => p.removeable);
+  const nonDefaultPackages = [...packages].filter((p) => p.removeable);
   if (nonDefaultPackages.length > 0) {
     params.append(
       "packages",

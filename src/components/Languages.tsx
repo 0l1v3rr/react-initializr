@@ -11,9 +11,9 @@ const Languages = () => {
     "@types/jest",
     "@types/node",
     "@types/react",
-    "@types/react-dom"
+    "@types/react-dom",
   ];
-  
+
   // parsing the query parameters
   const params = new URLSearchParams(window.location.search);
   const languageParam = params.get("language");
@@ -23,7 +23,7 @@ const Languages = () => {
   const setPackageArray = useSetRecoilState(packagesArrayState);
 
   useEffect(() => {
-    if(languageParam?.toLowerCase() === "typescript") {
+    if (languageParam?.toLowerCase() === "typescript") {
       setLanguage("TypeScript");
     }
   }, []);
@@ -31,14 +31,16 @@ const Languages = () => {
   // reacting to the language state change
   useEffect(() => {
     // if the language is javascript
-    if(language.toLocaleLowerCase() === "javascript") {
+    if (language.toLocaleLowerCase() === "javascript") {
       // then we remove every ts package
-      setPackageArray(prev => prev.filter(p => !tsPackages.includes(p.packageName)));
+      setPackageArray((prev) =>
+        prev.filter((p) => !tsPackages.includes(p.packageName))
+      );
 
       // else (if the langauge is typescript)
     } else {
       // then we append the ts packages
-      for(const p of tsPackages) {
+      for (const p of tsPackages) {
         axios.get(`https://registry.npmjs.org/${p}/latest`).then((res) => {
           // creating the package from the result
           const r: Package = {
@@ -60,7 +62,10 @@ const Languages = () => {
       <div className="font-semibold italic">Language</div>
       <form className="flex flex-col mt-1">
         <RadioInput
-          checked={languageParam === null || languageParam.toLowerCase() === "javascript"}
+          checked={
+            languageParam === null ||
+            languageParam.toLowerCase() === "javascript"
+          }
           state={languageState}
           formName="language"
           value="JavaScript"

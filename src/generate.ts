@@ -1,5 +1,5 @@
 import JSZip from "jszip";
-import { getLatestDependencyVersion, readRemoteFile } from "./utils";
+import { readRemoteFile } from "./utils";
 import { Project } from "./types";
 import { saveAs } from "file-saver";
 import { Dispatch, SetStateAction } from "react";
