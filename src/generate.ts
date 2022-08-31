@@ -93,7 +93,6 @@ const generatePackageJson = async (p: Project) => {
   const {
     description,
     version,
-    language,
     author,
     gitRepo,
     homepage,
@@ -103,23 +102,6 @@ const generatePackageJson = async (p: Project) => {
   } = p;
 
   let dependencies: any = {};
-
-  // we only append these dependencies if the choosen language is typescript
-  if (language.toLowerCase() === "typescript") {
-    // adding some libraries manually
-    // but firstly, finding out the latest version each of them
-    let tsVersion = await getLatestDependencyVersion("typescript");
-    let jestVersion = await getLatestDependencyVersion("@types/jest");
-    let nodeVersion = await getLatestDependencyVersion("@types/node");
-    let reactVersion = await getLatestDependencyVersion("@types/react");
-    let reactDomVersion = await getLatestDependencyVersion("@types/react-dom");
-
-    dependencies["typescript"] = `^${tsVersion}`;
-    dependencies["@types/jest"] = `^${jestVersion}`;
-    dependencies["@types/node"] = `^${nodeVersion}`;
-    dependencies["@types/react"] = `^${reactVersion}`;
-    dependencies["@types/react-dom"] = `^${reactDomVersion}`;
-  }
 
   // iterating through the packages and adding each of them
   // to the dependencies

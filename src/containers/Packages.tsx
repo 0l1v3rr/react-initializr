@@ -1,5 +1,4 @@
 import Button from "../components/Button";
-import Title from "../components/Title";
 
 import { FiPackage } from "react-icons/fi";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
@@ -34,7 +33,7 @@ const Packages = () => {
       "@testing-library/jest-dom",
     ];
 
-    let packages = [...defaultPackages];
+    const packages = [...defaultPackages];
 
     // appending the packages coming from the url
     // if it's null, then we only have the default packages
