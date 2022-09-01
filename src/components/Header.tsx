@@ -44,6 +44,11 @@ const Header = () => {
       return;
     }
 
+    if(event.key === "Escape") {
+      setIsValidatingPopupOpen(false);
+      return;
+    }
+
     // if the target is an input, we should not trigger the event
     if ((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
       return;
