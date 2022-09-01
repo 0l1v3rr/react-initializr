@@ -87,6 +87,9 @@ const Packages = () => {
         case "D":
           setPackageArray((prev) => prev.filter((p) => !p.removeable));
           break;
+        case "H":
+          setIsDefaultPackagesHidden(prev => !prev);
+          break;
       }
     }
   }, []);

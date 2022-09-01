@@ -52,6 +52,8 @@ In order to make the site more convenient, you can use some keyboard shortcuts.
 - <kbd>Shift</kbd> + <kbd>P</kbd> - Opens the packages popup window
 - <kbd>Shift</kbd> + <kbd>D</kbd> - Deletes the added dependencies (except for the default ones)
 - <kbd>Shift</kbd> + <kbd>L</kbd> - Resets the project information to default
+- <kbd>Shift</kbd> + <kbd>H</kbd> - Hides/Shows the default packages in the packages list
+- <kbd>Escape</kbd> - Closes every open popup window
 
 <hr>
 
