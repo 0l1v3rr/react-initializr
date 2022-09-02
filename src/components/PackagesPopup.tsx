@@ -51,6 +51,12 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
     }
   }, [searchValue]);
 
+  const onSearchItemClick = () => {
+    setCurrentPackages([]);
+    setSearchValue("");
+    closePopup();
+  };
+
   return (
     <div
       className={`border-2 bg-zinc-900 border-solid border-zinc-800 rounded-md 
@@ -109,6 +115,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
                   removeable: true,
                   version: (p as any).package.version,
                 }}
+                onClick={onSearchItemClick}
               />
             );
           })}

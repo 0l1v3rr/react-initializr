@@ -4,7 +4,8 @@ import { packagesArrayState } from "../atoms";
 import { Package } from "../types";
 
 interface PackageItemProps {
-  package: Package;
+  package: Package,
+  onClick: () => void
 }
 
 const SearchItem: FC<PackageItemProps> = (props) => {
@@ -19,6 +20,7 @@ const SearchItem: FC<PackageItemProps> = (props) => {
       onClick={() => {
         setPackageArray((prev) => [...prev, props.package]);
         setIsAdded(true);
+        props.onClick();
       }}
     >
       <div className="flex items-center justify-between">
