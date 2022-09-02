@@ -44,7 +44,7 @@ const Header = () => {
       return;
     }
 
-    if(event.key === "Escape") {
+    if (event.key === "Escape") {
       setIsValidatingPopupOpen(false);
       return;
     }

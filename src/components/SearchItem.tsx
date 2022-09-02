@@ -4,8 +4,8 @@ import { packagesArrayState } from "../atoms";
 import { Package } from "../types";
 
 interface PackageItemProps {
-  package: Package,
-  onClick: () => void
+  package: Package;
+  onClick: () => void;
 }
 
 const SearchItem: FC<PackageItemProps> = (props) => {

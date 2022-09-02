@@ -68,7 +68,7 @@ const Packages = () => {
       return;
     }
 
-    if(event.key === "Escape") {
+    if (event.key === "Escape") {
       setIsPackagePopupActive(false);
       return;
     }
@@ -88,7 +88,7 @@ const Packages = () => {
           setPackageArray((prev) => prev.filter((p) => !p.removeable));
           break;
         case "H":
-          setIsDefaultPackagesHidden(prev => !prev);
+          setIsDefaultPackagesHidden((prev) => !prev);
           break;
       }
     }
