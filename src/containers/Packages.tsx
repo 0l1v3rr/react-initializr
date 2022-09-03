@@ -114,7 +114,10 @@ const Packages = () => {
         </span>
       </div>
 
-      <BlurOverlay isActive={isPackagePopupActive} />
+      <BlurOverlay
+        isActive={isPackagePopupActive}
+        closePopup={() => setIsPackagePopupActive(false)}
+      />
       <PackagesPopup
         isActive={isPackagePopupActive}
         closePopup={() => setIsPackagePopupActive(false)}

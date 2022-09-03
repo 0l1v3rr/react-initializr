@@ -111,7 +111,10 @@ const Header = () => {
       className="flex items-center justify-center md:justify-between w-full h-fit border-b-2 border-solid 
       border-zinc-800 sm:px-12 px-4 py-4 sticky top-0 bg-zinc-900 shadow-md z-10"
     >
-      <BlurOverlay isActive={isValidatingPopupOpen} />
+      <BlurOverlay
+        isActive={isValidatingPopupOpen}
+        closePopup={() => setIsValidatingPopupOpen(false)}
+      />
       <ErrorPopup
         isActive={isValidatingPopupOpen}
         closePopup={() => setIsValidatingPopupOpen(false)}

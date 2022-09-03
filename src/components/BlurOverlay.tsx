@@ -1,18 +1,20 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const BlurOverlay = (props: { isActive: boolean }) => {
+interface OverlayProps {
+  isActive: boolean;
+  closePopup?: () => void;
+}
+
+const BlurOverlay: FC<OverlayProps> = (props) => {
   useEffect(() => {
-    if (props.isActive) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = props.isActive ? "hidden" : "auto";
   }, [props.isActive]);
 
   return (
     <div
       className={`w-screen h-screen fixed top-0 left-0 transition-all duration-300 
       z-20 ${props.isActive ? "backdrop-blur-sm" : "pointer-events-none"}`}
+      onClick={props.closePopup}
     />
   );
 };
