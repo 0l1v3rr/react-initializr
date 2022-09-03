@@ -3,8 +3,8 @@ import { IoCloseOutline } from "react-icons/io5";
 
 interface PopupProps {
   isActive: boolean;
+  message: string | null;
   closePopup: () => void;
-  message: string;
 }
 
 const ErrorPopup: FC<PopupProps> = (props) => {

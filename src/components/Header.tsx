@@ -8,7 +8,8 @@ import BlurOverlay from "./BlurOverlay";
 import ErrorPopup from "./ErrorPopup";
 import { generateZip } from "../generate";
 import { copyLink } from "../copy";
-
+import { validateProject } from "../validate";
+import { ValidateResponse } from "../types";
 import { useRecoilValue } from "recoil";
 import {
   nameState,
@@ -38,6 +39,13 @@ const Header = () => {
 
   const [copyText, setCopyText] = useState("Copy Link");
   const [genereateText, setGenerateText] = useState("Generate ZIP");
+
+  // state to store the validating response
+  const [validatingResponse, setValidatingResponse] =
+    useState<ValidateResponse>({
+      errorMessage: null,
+      isValid: true,
+    });
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (event.isComposing || event.repeat) {
@@ -79,7 +87,18 @@ const Header = () => {
   }, [handleKeyPress]);
 
   const callGenerateZip = () => {
-    generateZip(setGenerateText, setIsValidatingPopupOpen, {
+    // call the validating function
+    setValidatingResponse(validateProject(name, gitRepo, homepage));
+
+    // if any of the inputs is not valid
+    if (!validatingResponse?.isValid) {
+      setIsValidatingPopupOpen(true);
+      return;
+    }
+
+    // generate the zip
+    setIsValidatingPopupOpen(false);
+    generateZip(setGenerateText, {
       name: name,
       version: version,
       description: description,
@@ -118,7 +137,7 @@ const Header = () => {
       <ErrorPopup
         isActive={isValidatingPopupOpen}
         closePopup={() => setIsValidatingPopupOpen(false)}
-        message="The name of the project cannot be blank."
+        message={validatingResponse.errorMessage}
       />
 
       <div className="items-center text-2xl gap-2 cursor-pointer md:flex hidden">

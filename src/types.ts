@@ -16,3 +16,8 @@ export interface Project {
   packages: Package[];
   homepage: string;
 }
+
+export interface ValidateResponse {
+  isValid: boolean;
+  errorMessage: string | null;
+}

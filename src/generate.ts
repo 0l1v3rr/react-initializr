@@ -6,16 +6,9 @@ import { Dispatch, SetStateAction } from "react";
 
 export const generateZip = async (
   setGenerateText: Dispatch<SetStateAction<string>>,
-  setIsValidatingPopupOpen: Dispatch<SetStateAction<boolean>>,
   p: Project
 ) => {
   const { language, name } = p;
-
-  // validating the name field
-  if (name.trim().length < 1) {
-    setIsValidatingPopupOpen(true);
-    return;
-  }
 
   setGenerateText("Generating...");
 
