@@ -2,19 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --react-color: #61dafb;
+}
+
+/* CSS reset */
 *,
 *::before,
 *::after {
   outline: none;
 }
 
+/* scrollbar reset */
 *::-webkit-scrollbar {
   display: none;
 }
 
-:root {
-  --react-color: #61dafb;
-}
+/* React color variables */
 .color-react {
   color: var(--react-color);
 }
@@ -30,6 +34,21 @@
 }
 .show-child-on-hover:hover > div {
   opacity: 1;
+}
+
+/* Radio input styles */
+.radio > label::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-40%);
+  left: -10%;
+  margin-left: 1rem;
+  transition: 75ms;
 }
 
 .radio > input[type="radio"]:checked + label {
@@ -48,20 +67,6 @@
 .radio > label {
   margin-left: 1.65rem;
   font-size: 0.95em;
-}
-
-.radio > label::before {
-  content: "";
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid #bbb;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-40%);
-  left: -10%;
-  margin-left: 1rem;
-  transition: 75ms;
 }
 
 .radio:hover > label::before {

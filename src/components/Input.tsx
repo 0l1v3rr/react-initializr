@@ -30,8 +30,8 @@ const Input: FC<InputProps> = (props) => {
         value={props.value}
         required={props.required}
         className="w-full outline-none border-2 border-zinc-800 bg-zinc-900
-          rounded-md pl-2 pr-7 py-1 border-react-active transition-all text-zinc-300
-          placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
+          rounded-md pl-2 pr-2 focus:pr-7 active:pr-7 py-1 border-react-active transition-all 
+          text-zinc-300 placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
         onChange={(e) => props.setValue(e.target.value)}
         autoComplete="off"
       />
