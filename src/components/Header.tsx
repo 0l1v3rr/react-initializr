@@ -3,13 +3,9 @@ import { BiCopy } from "react-icons/bi";
 import { FiGithub } from "react-icons/fi";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
-import { useCallback, useEffect, useState } from "react";
-import BlurOverlay from "./BlurOverlay";
-import ErrorPopup from "./ErrorPopup";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { generateZip } from "../generate";
 import { copyLink } from "../copy";
-import { validateProject } from "../validate";
-import { ValidateResponse } from "../types";
 import { useRecoilValue } from "recoil";
 import {
   nameState,
@@ -22,6 +18,7 @@ import {
   packagesArrayState,
   homepageState,
 } from "../atoms";
+import { Project } from "../types";
 
 const Header = () => {
   // recoil states
@@ -35,25 +32,53 @@ const Header = () => {
   const packages = useRecoilValue(packagesArrayState);
   const homepage = useRecoilValue(homepageState);
 
-  const [isValidatingPopupOpen, setIsValidatingPopupOpen] = useState(false);
-
   const [copyText, setCopyText] = useState("Copy Link");
   const [genereateText, setGenerateText] = useState("Generate ZIP");
 
-  // state to store the validating response
-  const [validatingResponse, setValidatingResponse] =
-    useState<ValidateResponse>({
-      errorMessage: null,
-      isValid: true,
-    });
+  // a project object to access the newest version of the state without rerendering
+  const projectRef = useRef<Project>({
+    author: author,
+    description: description,
+    gitRepo: gitRepo,
+    homepage: homepage,
+    language: language,
+    license: license,
+    name: name,
+    packages: packages,
+    version: version,
+  });
+
+  // update the project object every time something changes
+  useEffect(() => {
+    projectRef.current.name = name;
+  }, [name]);
+  useEffect(() => {
+    projectRef.current.version = version;
+  }, [version]);
+  useEffect(() => {
+    projectRef.current.description = description;
+  }, [description]);
+  useEffect(() => {
+    projectRef.current.gitRepo = gitRepo;
+  }, [gitRepo]);
+  useEffect(() => {
+    projectRef.current.author = author;
+  }, [author]);
+  useEffect(() => {
+    projectRef.current.license = license;
+  }, [license]);
+  useEffect(() => {
+    projectRef.current.language = language;
+  }, [language]);
+  useEffect(() => {
+    projectRef.current.packages = packages;
+  }, [packages]);
+  useEffect(() => {
+    projectRef.current.homepage = homepage;
+  }, [homepage]);
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (event.isComposing || event.repeat) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-      setIsValidatingPopupOpen(false);
       return;
     }
 
@@ -66,10 +91,10 @@ const Header = () => {
     if (event.shiftKey) {
       switch (event.key) {
         case "G":
-          callGenerateZip();
+          generateZip(setGenerateText, projectRef.current);
           break;
         case "C":
-          callCopyLink();
+          copyLink(setCopyText, projectRef.current);
           break;
         case "S":
           window.open("https://github.com/0l1v3rr/react-initializr", "_blank");
@@ -86,60 +111,11 @@ const Header = () => {
     return () => document.removeEventListener("keydown", handleKeyPress);
   }, [handleKeyPress]);
 
-  const callGenerateZip = () => {
-    // call the validating function
-    setValidatingResponse(validateProject(name, gitRepo, homepage));
-
-    // if any of the inputs is not valid
-    if (!validatingResponse?.isValid) {
-      setIsValidatingPopupOpen(true);
-      return;
-    }
-
-    // generate the zip
-    setIsValidatingPopupOpen(false);
-    generateZip(setGenerateText, {
-      name: name,
-      version: version,
-      description: description,
-      gitRepo: gitRepo,
-      language: language,
-      author: author,
-      license: license,
-      homepage: homepage,
-      packages: packages,
-    });
-  };
-
-  const callCopyLink = () => {
-    copyLink(setCopyText, {
-      name: name,
-      version: version,
-      description: description,
-      gitRepo: gitRepo,
-      language: language,
-      author: author,
-      license: license,
-      homepage: homepage,
-      packages: packages,
-    });
-  };
-
   return (
     <header
       className="flex items-center justify-center md:justify-between w-full h-fit border-b-2 border-solid 
       border-zinc-800 sm:px-12 px-4 py-4 sticky top-0 bg-zinc-900 shadow-md z-10"
     >
-      <BlurOverlay
-        isActive={isValidatingPopupOpen}
-        closePopup={() => setIsValidatingPopupOpen(false)}
-      />
-      <ErrorPopup
-        isActive={isValidatingPopupOpen}
-        closePopup={() => setIsValidatingPopupOpen(false)}
-        message={validatingResponse.errorMessage}
-      />
-
       <div className="items-center text-2xl gap-2 cursor-pointer md:flex hidden">
         <img
           className="w-12 animate-spin-slow"
@@ -157,10 +133,14 @@ const Header = () => {
         <Button
           text={genereateText}
           icon={BsFileZip}
-          onClick={callGenerateZip}
+          onClick={() => generateZip(setGenerateText, projectRef.current)}
         />
 
-        <Button text={copyText} icon={BiCopy} onClick={callCopyLink} />
+        <Button
+          text={copyText}
+          icon={BiCopy}
+          onClick={() => copyLink(setCopyText, projectRef.current)}
+        />
 
         <div className="hidden sm:block">
           <ButtonLink
