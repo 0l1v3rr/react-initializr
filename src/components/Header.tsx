@@ -20,6 +20,7 @@ import {
   homepageState,
 } from "../atoms";
 import { Project } from "../types";
+import { reactColors } from "../utils";
 
 const Header = () => {
   // recoil states
@@ -99,6 +100,15 @@ const Header = () => {
           break;
         case "S":
           window.open("https://github.com/0l1v3rr/react-initializr", "_blank");
+          break;
+        case "T":
+          document.body.style.setProperty(
+            "--react-color",
+            reactColors[Math.floor(Math.random() * reactColors.length)]
+          );
+          break;
+        case "R":
+          document.body.style.setProperty("--react-color", "#61dafb");
           break;
       }
     }

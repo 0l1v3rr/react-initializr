@@ -21,6 +21,7 @@
 /* React color variables */
 .color-react {
   color: var(--react-color);
+  transition: 0.25s ease;
 }
 .color-react-hover:hover {
   color: var(--react-color);

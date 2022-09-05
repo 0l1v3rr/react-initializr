@@ -1,5 +1,21 @@
 import axios from "axios";
 
+export const reactColors: string[] = [
+  "#fb6161",
+  "#fb9461",
+  "#fbd761",
+  "#d7fb61",
+  "#82fb61",
+  "#61fb7b",
+  "#61fbd7",
+  "#61a9fb",
+  "#6170fb",
+  "#a161fb",
+  "#f661fb",
+  "#fb61c5",
+  "#00c8ff",
+];
+
 // function to convert any string into kebab-case
 export const convertToKebabCase = (s: string): string =>
   s.toLowerCase().split(" ").join("-");
