@@ -1,6 +1,7 @@
 import { BsFileZip } from "react-icons/bs";
 import { BiCopy } from "react-icons/bi";
 import { FiGithub } from "react-icons/fi";
+import { FaReact } from "react-icons/fa";
 import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -117,11 +118,9 @@ const Header = () => {
       border-zinc-800 sm:px-12 px-4 py-4 sticky top-0 bg-zinc-900 shadow-md z-10"
     >
       <div className="items-center text-2xl gap-2 cursor-pointer md:flex hidden">
-        <img
-          className="w-12 animate-spin-slow"
-          src={`${process.env.PUBLIC_URL}/logo512.png`}
-          alt="React Logo"
-        />
+        <div className="animate-spin-slow text-5xl color-react">
+          <FaReact />
+        </div>
 
         <div className="flex items-center gap-1 font-semibold">
           <span className="color-react">React</span>
