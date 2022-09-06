@@ -8,7 +8,6 @@ import { Package } from "../types";
 const Languages = () => {
   const tsPackages = [
     "typescript",
-    "@types/jest",
     "@types/node",
     "@types/react",
     "@types/react-dom",

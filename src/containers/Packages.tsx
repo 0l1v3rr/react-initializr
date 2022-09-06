@@ -24,14 +24,7 @@ const Packages = () => {
     const packagesParam = params.get("packages");
 
     // default packages
-    const defaultPackages = [
-      "react",
-      "react-scripts",
-      "react-dom",
-      "@testing-library/user-event",
-      "@testing-library/react",
-      "@testing-library/jest-dom",
-    ];
+    const defaultPackages = ["react", "react-scripts", "react-dom"];
 
     const packages = [...defaultPackages];
 
