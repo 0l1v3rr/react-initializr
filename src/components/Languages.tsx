@@ -47,6 +47,7 @@ const Languages = () => {
             description: res.data.description,
             removeable: false,
             version: res.data.version,
+            isDev: false,
           };
 
           // appending it to our packages array

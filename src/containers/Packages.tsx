@@ -45,6 +45,7 @@ const Packages = () => {
           description: res.data.description,
           removeable: !defaultPackages.includes(res.data.name),
           version: res.data.version,
+          isDev: false,
         };
 
         // appending it to our packages array

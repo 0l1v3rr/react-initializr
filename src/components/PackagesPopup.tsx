@@ -114,6 +114,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
                   description: (p as any).package.description,
                   removeable: true,
                   version: (p as any).package.version,
+                  isDev: false,
                 }}
                 onClick={onSearchItemClick}
               />

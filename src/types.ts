@@ -3,6 +3,7 @@ export interface Package {
   description: string;
   version: string;
   removeable: boolean;
+  isDev: boolean;
 }
 
 export interface Project {
