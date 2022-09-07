@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, FormEvent } from "react";
 import { Package } from "../types";
 
 import { useSetRecoilState } from "recoil";
@@ -22,6 +22,33 @@ const PackageItem: FC<PackageItemProps> = (props) => {
         ) {
           res.push(p);
         }
+      }
+
+      return res;
+    });
+  };
+
+  const handleCheckboxChange = (e: FormEvent<HTMLInputElement>) => {
+    const isChecked = (e.target as HTMLInputElement).checked;
+
+    setPackageArray((prev) => {
+      const res: Package[] = [];
+
+      for (const p of prev) {
+        if (
+          p.packageName.toLowerCase() ===
+          props.package.packageName.toLowerCase()
+        ) {
+          res.push({
+            description: p.description,
+            isDev: isChecked,
+            packageName: p.packageName,
+            removeable: p.removeable,
+            version: p.version,
+          });
+          continue;
+        }
+        res.push(p);
       }
 
       return res;
@@ -63,6 +90,7 @@ const PackageItem: FC<PackageItemProps> = (props) => {
               <input
                 type="checkbox"
                 className="absolute opacity-0 w-0 h-0 peer"
+                onChange={handleCheckboxChange}
               />
               <span className=" text-zinc-400">Dev dependency: </span>
               <span
@@ -89,7 +117,7 @@ const PackageItem: FC<PackageItemProps> = (props) => {
             border-solid border-zinc-800 rounded-md flex items-center 
             justify-center gap-2 leading-7 transition-all hover:scale-[103%] 
             hover:shadow-md text-[1em] text-red-400 hover:bg-white/[0.04] 
-            hover:border-zinc-700 hover:text-red-500"
+            hover:border-zinc-700"
             aria-label={`Delete package ${props.package.packageName}`}
           >
             Remove
