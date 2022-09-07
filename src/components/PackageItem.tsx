@@ -1,10 +1,8 @@
 import { FC } from "react";
 import { Package } from "../types";
 
-import { AiOutlineDelete } from "react-icons/ai";
 import { useSetRecoilState } from "recoil";
 import { packagesArrayState } from "../atoms";
-import HoverContainer from "./HoverContainer";
 
 interface PackageItemProps {
   package: Package;
@@ -68,11 +66,19 @@ const PackageItem: FC<PackageItemProps> = (props) => {
               />
               <span className=" text-zinc-400">Dev dependency: </span>
               <span
-                className="w-4 h-4 border-2 border-zinc-800 rounded-sm 
+                className="w-4 h-4 border-2 border-zinc-800 rounded-sm relative
                   cursor-pointer hover:bg-white/[0.04] hover:border-zinc-700
                   transition-all duration-300 shadow-sm peer-checked:bg-zinc-800
-                  peer-checked:rotate-180 peer-checked:scale-110 
-                  peer-checked:border-zinc-600"
+                  peer-checked:rotate-180 peer-checked:scale-110 peer-checked:border-zinc-600 
+                  before:absolute before:content[''] before:bg-green-500 before:w-[1px]
+                  before:h-[90%] before:rotate-45 before:top-1/2 before:left-1/2
+                  before:-translate-x-1/2 before:-translate-y-1/2 before:opacity-0
+                  after:absolute after:content[''] after:bg-green-500 after:w-[1px]
+                  after:h-[90%] after:rotate-[135deg] after:top-1/2 after:left-1/2
+                  after:-translate-x-1/2 after:-translate-y-1/2 after:opacity-0
+                  peer-checked:before:opacity-100 peer-checked:after:opacity-100
+                  before:transition-all after:transition-all before:duration-300 
+                  after:duration-300"
               />
             </label>
           </div>
