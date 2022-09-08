@@ -95,10 +95,18 @@ const generatePackageJson = async (p: Project) => {
   } = p;
 
   let dependencies: any = {};
+  let devDependencies: any = {};
 
   // iterating through the packages and adding each of them
   // to the dependencies
   for (let i of packages) {
+    // if the package is a dev dependency
+    if (i.isDev) {
+      devDependencies[i.packageName] = `^${i.version}`;
+      continue;
+    }
+
+    // if not
     dependencies[i.packageName] = `^${i.version}`;
   }
 
@@ -108,11 +116,11 @@ const generatePackageJson = async (p: Project) => {
     version: version === "" ? "1.0.0" : version,
     private: true,
     dependencies: dependencies,
+    devDependencies: devDependencies,
     scripts: {
       start: "react-scripts start",
       build: "react-scripts build",
       test: "react-scripts test",
-      eject: "react-scripts eject",
     },
     eslintConfig: {
       extends: ["react-app", "react-app/jest"],
