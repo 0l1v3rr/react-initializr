@@ -27,12 +27,23 @@ const Packages = () => {
     const defaultPackages = ["react", "react-scripts", "react-dom"];
 
     const packages = [...defaultPackages];
+    const dev: string[] = [];
 
     // appending the packages coming from the url
     // if it's null, then we only have the default packages
     if (packagesParam !== null) {
       for (const i of packagesParam.split(";")) {
-        packages.push(i);
+        let splitted = i.split(",");
+        let packageName = splitted[0];
+
+        // if the package is a dev dependency
+        if (splitted.length > 1) {
+          if (splitted[1].split("=")[1] === "y") {
+            dev.push(packageName.toLowerCase());
+          }
+        }
+
+        packages.push(packageName);
       }
     }
 
@@ -45,7 +56,7 @@ const Packages = () => {
           description: res.data.description,
           removeable: !defaultPackages.includes(res.data.name),
           version: res.data.version,
-          isDev: false,
+          isDev: dev.includes(res.data.name.toLowerCase()),
         };
 
         // appending it to our packages array

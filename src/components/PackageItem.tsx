@@ -91,6 +91,7 @@ const PackageItem: FC<PackageItemProps> = (props) => {
                 type="checkbox"
                 className="absolute opacity-0 w-0 h-0 peer"
                 onChange={handleCheckboxChange}
+                checked={props.package.isDev}
               />
               <span className=" text-zinc-400">Dev dependency: </span>
               <span

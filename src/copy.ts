@@ -32,10 +32,15 @@ export const copyLink = (
 
   const nonDefaultPackages = [...packages].filter((p) => p.removeable);
   if (nonDefaultPackages.length > 0) {
-    params.append(
-      "packages",
-      nonDefaultPackages.map((p) => p.packageName).join(";")
-    );
+    let packagesString: string = "";
+    for (const i of nonDefaultPackages) {
+      packagesString += `${i.packageName},dev=${i.isDev ? "y" : "n"};`;
+    }
+
+    // remove the last character from the result (a semicolon)
+    packagesString = packagesString.slice(0, -1);
+
+    params.append("packages", packagesString);
   }
 
   // let domain = "http://localhost:3000";
