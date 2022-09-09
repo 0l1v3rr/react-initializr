@@ -50,3 +50,8 @@ export const packagesArrayState = atom({
   key: "packagesArray",
   default: [] as Package[],
 });
+
+export const dotfilesState = atom({
+  key: "dotfiles",
+  default: [] as string[],
+});
