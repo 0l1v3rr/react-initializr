@@ -1,0 +1,13 @@
+# Docker
+.dockerignore
+
+# Github
+.github
+.gitignore
+.gitattributes
+*.md
+LICENSE
+
+# Node
+node_modules
+npm-debug.log
