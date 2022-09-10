@@ -22,9 +22,6 @@ export const generateZip = async (
 
   // downloading and/or generating the necessary code
   const packageJson = await generatePackageJson(p);
-  const gitignore = await readRemoteFile(
-    "https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/.gitignore"
-  );
   const indexcss = await readRemoteFile(
     "https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-ts/src/index.css"
   );
@@ -41,7 +38,6 @@ export const generateZip = async (
   // creating the files and adding it to the zip
   project?.file("package.json", packageJson);
   project?.file("README.md", `# ${name}`);
-  project?.file(".gitignore", gitignore);
   fsrc?.file("index.css", indexcss);
   fsrc?.file(
     language.toLowerCase() === "typescript" ? "Aptsx" : "Apjs",
