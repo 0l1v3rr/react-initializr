@@ -1,3 +1,4 @@
+import Dotfiles from "../components/Dotfiles";
 import Languages from "../components/Languages";
 import PackageInformation from "../components/PackageInformation";
 import PackageManager from "../components/PackageManager";
@@ -17,6 +18,8 @@ const ProjectInfo = () => {
       </div>
 
       <PackageInformation />
+
+      <Dotfiles />
     </section>
   );
 };

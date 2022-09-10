@@ -53,5 +53,6 @@ export const packagesArrayState = atom({
 
 export const dotfilesState = atom({
   key: "dotfiles",
-  default: [] as string[],
+  default: [".gitignore"],
+  // default: [] as string[],
 });
