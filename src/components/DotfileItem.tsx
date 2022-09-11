@@ -30,7 +30,8 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
       className={`text-[.9rem] text-center border-2 transition-all duration-300
       ${isSelected ? "border-zinc-600 shadow-md" : "border-zinc-800"} 
       ${!isSelected && "hover:border-zinc-700 hover:text-zinc-300"}
-      ${isSelected && "color-react"} rounded-md px-2 py-1 cursor-pointer`}
+      ${isSelected && "color-react"} rounded-md px-2 cursor-pointer 
+      leading-none py-2`}
       onClick={handleItemClick}
     >
       {props.dotfile}

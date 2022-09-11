@@ -18,6 +18,7 @@ import {
   languageState,
   packagesArrayState,
   homepageState,
+  dotfilesState,
 } from "../atoms";
 import { Project } from "../types";
 import { reactColors } from "../utils";
@@ -33,6 +34,7 @@ const Header = () => {
   const language = useRecoilValue(languageState);
   const packages = useRecoilValue(packagesArrayState);
   const homepage = useRecoilValue(homepageState);
+  const dotfiles = useRecoilValue(dotfilesState);
 
   const [copyText, setCopyText] = useState("Copy Link");
   const [genereateText, setGenerateText] = useState("Generate ZIP");
@@ -48,6 +50,7 @@ const Header = () => {
     name: name,
     packages: packages,
     version: version,
+    dotfiles: dotfiles,
   });
 
   // update the project object every time something changes
@@ -78,6 +81,9 @@ const Header = () => {
   useEffect(() => {
     projectRef.current.homepage = homepage;
   }, [homepage]);
+  useEffect(() => {
+    projectRef.current.dotfiles = dotfiles;
+  }, [dotfiles]);
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (event.isComposing || event.repeat) {

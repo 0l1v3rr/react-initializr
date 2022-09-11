@@ -16,6 +16,7 @@ export interface Project {
   language: string;
   packages: Package[];
   homepage: string;
+  dotfiles: string[];
 }
 
 export interface ValidateResponse {

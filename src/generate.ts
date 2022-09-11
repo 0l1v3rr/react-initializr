@@ -3,12 +3,13 @@ import { readRemoteFile } from "./utils";
 import { Project } from "./types";
 import { saveAs } from "file-saver";
 import { Dispatch, SetStateAction } from "react";
+import { readDotfile } from "./dotfiles";
 
 export const generateZip = async (
   setGenerateText: Dispatch<SetStateAction<string>>,
   p: Project
 ) => {
-  const { language, name } = p;
+  const { language, name, dotfiles } = p;
 
   setGenerateText("Generating...");
 
@@ -34,6 +35,12 @@ export const generateZip = async (
   const indexhtml = await readRemoteFile(
     "https://raw.githubusercontent.com/0l1v3rr/react-initializr/master/templates/cra-js/public/index.html"
   );
+
+  // reading and adding the dotfiles
+  for (const filename of dotfiles) {
+    const fileContent = await readDotfile(filename);
+    project?.file(filename, fileContent);
+  }
 
   // creating the files and adding it to the zip
   project?.file("package.json", packageJson);
