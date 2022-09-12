@@ -23,7 +23,7 @@
 
 Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templates without barely touching the terminal - just fill in some input fields, add your beloved dependencies, and generate your project!
 
-<img src="./images/screenshot_1.png" alt="Screenshot">
+<img src="./images/screenshot_2.png" alt="Screenshot">
 
 <hr>
 
