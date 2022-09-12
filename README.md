@@ -5,6 +5,7 @@
 </h1>
 
 - [❓ What is React Initializr?](#-what-is-react-initializr)
+- [🕹️ Features](#️-features)
 - [❗ Important](#-important)
 - [⌨️ Hotkeys](#️-hotkeys)
 - [📚 Teach stack](#-teach-stack)
@@ -22,22 +23,29 @@
 
 Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templates without barely touching the terminal - just fill in some input fields, add your beloved dependencies, and generate your project!
 
-You can browse amongst every available npm package thanks to the <a href="https://github.com/npm/registry" target="_blank">NPM Registry API</a>.
-
-If you prefer to use **TypeScript** you can totally do that too, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else.
-
-Share your project with others - if you're about to create a tutorial, a blog, a course, or something that requires sharing your _"starting point"_ with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.
-
 <img src="./images/screenshot_1.png" alt="Screenshot">
+
+<hr>
+
+## 🕹️ Features
+- **Selecting packages** 
+  - You can browse amongst every available npm package thanks to the [NPM Registry API](https://github.com/npm/registry).
+  - You can add the selected package as a "dev dependency".
+- **TypeScript**
+  - Prefer to use TypeScript? You can totally do that, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else. 
+- **Share your project**
+  - If you're about to create a tutorial, a blog, or something that requires sharing your _"starting point"_ with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.
+- **Dotfiles**
+  - There are some available boilerplate dotfiles, config files, or utility files you can generate your project with. Just select the one you want under the "Select Dotfiles" section, and generate your project!
+  - Adding a new dotfile through contribution is highly appreciated. [Here's a guideline](https://github.com/0l1v3rr/react-initializr/issues/15).
+- **Hotkeys**
+  - In order to make interacting with the site more convenient, you can use keyboard shortcuts. You can find a list [here](#️-hotkeys).
 
 <hr>
 
 ## ❗ Important
 
 - The site generates a ZIP file. Just unzip it, `cd` to the folder (`cd my-project`), and run the command `npm i`. If you've successfully done this, you're good to go.
-
-- You can find the boilerplate-free templates [here](<[./templates](https://github.com/0l1v3rr/react-initializr/tree/master/templates)>). The site uses these as a base to generate your next project! ;)  
-  **_Note: The template is a transformed [create-react-app](https://create-react-app.dev/) template._**
 
 <hr>
 
