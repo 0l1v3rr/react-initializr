@@ -34,6 +34,7 @@ const Input: FC<InputProps> = (props) => {
           text-zinc-300 placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
         onChange={(e) => props.setValue(e.target.value)}
         autoComplete="off"
+        ref={(input) => input && input.focus()}
       />
 
       <button
