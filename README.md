@@ -28,11 +28,12 @@ Generate modern <a href="https://reactjs.org/" target="_blank">React</a> templat
 <hr>
 
 ## 🕹️ Features
-- **Selecting packages** 
+
+- **Selecting packages**
   - You can browse amongst every available npm package thanks to the [NPM Registry API](https://github.com/npm/registry).
   - You can add the selected package as a "dev dependency".
 - **TypeScript**
-  - Prefer to use TypeScript? You can totally do that, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else. 
+  - Prefer to use TypeScript? You can totally do that, just select the `TypeScript` option before generating the project. The site will add all the necessary dependencies and files, you don't have to do anything else.
 - **Share your project**
   - If you're about to create a tutorial, a blog, or something that requires sharing your _"starting point"_ with others, just click on the **"Copy Link"** button. If anyone opens that link, they can download the same exact project you created. Therefore you can almost skip the "generating project" phase.
 - **Dotfiles**

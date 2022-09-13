@@ -13,7 +13,12 @@ const Dotfiles = () => {
 
   return (
     <section className="mt-3 flex flex-col gap-2">
-      <div className="font-semibold italic">Select Dotfiles</div>
+      <div className="font-semibold italic w-full flex items-end gap-1">
+        <span>Select Dotfiles </span>
+        <span className="text-base text-zinc-500 italic">
+          ({dotfilesArray.length} selected)
+        </span>
+      </div>
 
       <div className="grid grid-cols-3 xl:grid-cols-4 gap-2">
         {dotfiles.map((dotfile) => {
