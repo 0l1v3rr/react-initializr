@@ -66,9 +66,9 @@ const PackageItem: FC<PackageItemProps> = (props) => {
           font-semibold color-react-hover transition-all duration-100"
         >
           {props.package.packageName}
-          <span className="font-light text-zinc-400 text-base">
+          <span className="font-light text-zinc-400 text-base italic">
             {" "}
-            ({props.package.removeable ? props.package.version : "Default"})
+            ({props.package.version}) {!props.package.removeable && "(Default)"}
           </span>
         </a>
       </div>
