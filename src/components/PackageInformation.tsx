@@ -115,15 +115,6 @@ const PackageInformation = () => {
       />
 
       <Input
-        label="Git Repository"
-        placeholder="https://github.com/myUsername/my-repository"
-        type="url"
-        value={gitRepo}
-        setValue={setGitRepo}
-        required={false}
-      />
-
-      <Input
         label="Author"
         placeholder="John Doe"
         type="text"
@@ -138,6 +129,15 @@ const PackageInformation = () => {
         type="text"
         value={homepage}
         setValue={setHomepage}
+        required={false}
+      />
+
+      <Input
+        label="Git Repository"
+        placeholder="https://github.com/myUsername/my-repository"
+        type="url"
+        value={gitRepo}
+        setValue={setGitRepo}
         required={false}
       />
 
