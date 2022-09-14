@@ -133,8 +133,16 @@ const Header = () => {
       className="flex items-center justify-center md:justify-between w-full h-fit border-b-2 border-solid 
       border-zinc-800 sm:px-12 px-4 py-4 sticky top-0 bg-zinc-900 shadow-md z-10"
     >
-      <div className="items-center text-2xl gap-2 cursor-pointer md:flex hidden">
-        <div className="animate-spin-slow text-5xl color-react">
+      <div className="items-center text-2xl gap-2 md:flex hidden">
+        <div
+          className="animate-spin-slow text-5xl cursor-pointer color-react"
+          onClick={() => {
+            document.body.style.setProperty(
+              "--react-color",
+              reactColors[Math.floor(Math.random() * reactColors.length)]
+            );
+          }}
+        >
           <FaReact />
         </div>
 
