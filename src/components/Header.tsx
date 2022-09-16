@@ -14,7 +14,6 @@ import {
   descriptionState,
   gitRepoState,
   authorState,
-  licenseState,
   languageState,
   packagesArrayState,
   homepageState,
@@ -30,7 +29,6 @@ const Header = () => {
   const description = useRecoilValue(descriptionState);
   const gitRepo = useRecoilValue(gitRepoState);
   const author = useRecoilValue(authorState);
-  const license = useRecoilValue(licenseState);
   const language = useRecoilValue(languageState);
   const packages = useRecoilValue(packagesArrayState);
   const homepage = useRecoilValue(homepageState);
@@ -46,7 +44,6 @@ const Header = () => {
     gitRepo: gitRepo,
     homepage: homepage,
     language: language,
-    license: license,
     name: name,
     packages: packages,
     version: version,
@@ -69,9 +66,6 @@ const Header = () => {
   useEffect(() => {
     projectRef.current.author = author;
   }, [author]);
-  useEffect(() => {
-    projectRef.current.license = license;
-  }, [license]);
   useEffect(() => {
     projectRef.current.language = language;
   }, [language]);

@@ -93,7 +93,7 @@ const PackageItem: FC<PackageItemProps> = (props) => {
                 onChange={handleCheckboxChange}
                 checked={props.package.isDev}
               />
-              <span className=" text-zinc-400">Dev dependency: </span>
+              <span className="text-zinc-400">Dev dependency: </span>
               <span
                 className="w-4 h-4 border-2 border-zinc-800 rounded-sm relative
                   cursor-pointer hover:bg-white/[0.04] hover:border-zinc-700

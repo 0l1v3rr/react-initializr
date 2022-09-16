@@ -86,16 +86,7 @@ export const generateZip = async (
 };
 
 const generatePackageJson = async (p: Project) => {
-  const {
-    description,
-    version,
-    author,
-    gitRepo,
-    homepage,
-    license,
-    name,
-    packages,
-  } = p;
+  const { description, version, author, gitRepo, homepage, name, packages } = p;
 
   let dependencies: any = {};
   let devDependencies: any = {};
@@ -141,7 +132,6 @@ const generatePackageJson = async (p: Project) => {
   // only append if the current value is not empty
   if (description !== "") result.description = description;
   if (author !== "") result.author = author;
-  if (license !== "") result.license = license;
   if (homepage !== "") result.homepage = homepage;
 
   if (gitRepo !== "") {

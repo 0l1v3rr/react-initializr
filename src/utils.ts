@@ -26,14 +26,3 @@ export const readRemoteFile = async (url: string) => {
   await axios.get(url).then((r) => (res = r.data));
   return res;
 };
-
-// function to get the latest stable version of an npm
-export const getLatestDependencyVersion = async (name: string) => {
-  let version = "";
-
-  await axios.get(`https://registry.npmjs.org/${name}/latest`).then((res) => {
-    version = res.data.version;
-  });
-
-  return version;
-};

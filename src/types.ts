@@ -12,7 +12,6 @@ export interface Project {
   description: string;
   gitRepo: string;
   author: string;
-  license: string;
   language: string;
   packages: Package[];
   homepage: string;

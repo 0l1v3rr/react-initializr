@@ -26,11 +26,6 @@ export const authorState = atom({
   default: "",
 });
 
-export const licenseState = atom({
-  key: "license",
-  default: "MIT",
-});
-
 export const homepageState = atom({
   key: "homepage",
   default: "",

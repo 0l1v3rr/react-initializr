@@ -9,7 +9,6 @@ import {
   descriptionState,
   gitRepoState,
   authorState,
-  licenseState,
   homepageState,
 } from "../atoms";
 
@@ -20,7 +19,6 @@ const PackageInformation = () => {
   const [description, setDescription] = useRecoilState(descriptionState);
   const [gitRepo, setGitRepo] = useRecoilState(gitRepoState);
   const [author, setAuthor] = useRecoilState(authorState);
-  const [license, setLicense] = useRecoilState(licenseState);
   const [homepage, setHomepage] = useRecoilState(homepageState);
 
   // overriding the state value if the query param is not null
@@ -33,7 +31,6 @@ const PackageInformation = () => {
     const pDescription = params.get("description");
     const pRepo = params.get("repository");
     const pAuthor = params.get("author");
-    const pLicense = params.get("license");
     const pHomepage = params.get("homepage");
 
     if (pName !== null) setName(pName);
@@ -41,7 +38,6 @@ const PackageInformation = () => {
     if (pDescription !== null) setDescription(pDescription);
     if (pRepo !== null) setGitRepo(pRepo);
     if (pAuthor !== null) setAuthor(pAuthor);
-    if (pLicense !== null) setLicense(pLicense);
     if (pHomepage !== null) setHomepage(pHomepage);
   }, []);
 
@@ -68,7 +64,6 @@ const PackageInformation = () => {
           setDescription("");
           setGitRepo("");
           setAuthor("");
-          setLicense("MIT");
           setHomepage("");
           break;
       }
@@ -134,20 +129,11 @@ const PackageInformation = () => {
 
       <Input
         label="Git Repository"
-        placeholder="https://github.com/myUsername/my-repository"
+        placeholder="https://github.com/username/my-repository"
         type="url"
         value={gitRepo}
         setValue={setGitRepo}
         required={false}
-      />
-
-      <Input
-        label="License"
-        placeholder="MIT"
-        type="text"
-        value={license}
-        setValue={setLicense}
-        required={true}
       />
     </section>
   );

@@ -12,7 +12,6 @@ export const copyLink = (
     author,
     gitRepo,
     homepage,
-    license,
     name,
     packages,
   } = p;
@@ -26,7 +25,6 @@ export const copyLink = (
   if (description.trim() !== "") params.append("description", description);
   if (gitRepo.trim() !== "") params.append("repository", gitRepo);
   if (author.trim() !== "") params.append("author", author);
-  if (license.trim() !== "") params.append("license", license);
   if (homepage.trim() !== "") params.append("homepage", homepage);
   params.append("language", language);
 
