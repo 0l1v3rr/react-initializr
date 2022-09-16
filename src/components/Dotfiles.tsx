@@ -20,7 +20,7 @@ const Dotfiles = () => {
         </span>
       </div>
 
-      <div className="grid grid-cols-3 xl:grid-cols-4 gap-2">
+      <div className="grid grid-cols-3 gap-2">
         {dotfiles.map((dotfile) => {
           return (
             <DotfileItem
