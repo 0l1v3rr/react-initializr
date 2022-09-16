@@ -7,10 +7,6 @@ import { useEffect } from "react";
 const Dotfiles = () => {
   const dotfilesArray = useRecoilValue(dotfilesState);
 
-  useEffect(() => {
-    console.log(dotfilesArray);
-  }, [dotfilesArray]);
-
   return (
     <section className="mt-3 flex flex-col gap-2">
       <div className="font-semibold italic w-full flex items-end gap-1">
@@ -20,7 +16,7 @@ const Dotfiles = () => {
         </span>
       </div>
 
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3 grid-cols-2 gap-2">
         {dotfiles.map((dotfile) => {
           return (
             <DotfileItem
