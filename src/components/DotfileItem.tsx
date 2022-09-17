@@ -77,7 +77,7 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
         closePopup={() => setIsPopupActive(false)}
         dotfileName={props.dotfile}
       >
-        <div className="px-4 py-2 flex flex-col gap-1 items-start">
+        <div className="px-4 py-2 flex flex-col gap-1 items-start cursor-text select-text selection:bg-zinc-600">
           {dotfileContent.split("\n").map((line) => {
             return (
               <div
