@@ -1,4 +1,5 @@
 import { ReactElement, FC } from "react";
+import { IoCloseOutline } from "react-icons/io5";
 
 interface DotfilePopupProps {
   children: ReactElement;
@@ -20,9 +21,18 @@ const DotfilePopup: FC<DotfilePopupProps> = (props) => {
           props.isActive ? activeClasses : inactiveClasses
         }`}
     >
-      <div className="text-lg font-semibold px-4 py-2 border-b-2 border-zinc-800">
-        {props.dotfileName}
+      <div className="flex px-4 py-2 border-b-2 border-zinc-800 justify-between">
+        <div className="text-lg font-semibold">{props.dotfileName}</div>
+
+        <button
+          className="scale-110 color-react-hover transition 
+          duration-100 hover:scale-125 text-lg"
+          onClick={props.closePopup}
+        >
+          <IoCloseOutline />
+        </button>
       </div>
+
       {props.children}
     </div>
   );
