@@ -56,7 +56,8 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
   useEffect(() => {
     (async () => {
       const res = await readDotfile(props.dotfile);
-      setDotfileContent(res.toString());
+      const converted = res.toString();
+      setDotfileContent(converted === "[object Object]" ? JSON.stringify(res, null, 2) : converted);
     })();
   }, []);
 
