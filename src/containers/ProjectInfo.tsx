@@ -1,7 +1,7 @@
-import Dotfiles from "../components/Dotfiles";
-import Languages from "../components/Languages";
-import PackageInformation from "../components/PackageInformation";
-import PackageManager from "../components/PackageManager";
+import Dotfiles from "../components/dotfiles/Dotfiles";
+import Languages from "../components/sections/Languages";
+import PackageInformation from "../components/sections/PackageInformation";
+import PackageManager from "../components/sections/PackageManager";
 import Title from "../components/Title";
 
 const ProjectInfo = () => {

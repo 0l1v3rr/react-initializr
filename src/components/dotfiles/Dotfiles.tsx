@@ -1,8 +1,7 @@
 import { useRecoilValue } from "recoil";
-import { dotfiles } from "../dotfiles";
+import { dotfiles } from "../../dotfiles";
 import DotfileItem from "./DotfileItem";
-import { dotfilesState } from "../atoms";
-import { useEffect } from "react";
+import { dotfilesState } from "../../atoms";
 
 const Dotfiles = () => {
   const dotfilesArray = useRecoilValue(dotfilesState);

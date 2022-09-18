@@ -1,8 +1,8 @@
 import { FC, FormEvent } from "react";
-import { Package } from "../types";
+import { Package } from "../../types";
 
 import { useSetRecoilState } from "recoil";
-import { packagesArrayState } from "../atoms";
+import { packagesArrayState } from "../../atoms";
 
 interface PackageItemProps {
   package: Package;

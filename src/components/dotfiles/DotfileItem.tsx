@@ -1,11 +1,11 @@
 import { FC, useState, useEffect, useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { dotfilesState } from "../atoms";
+import { dotfilesState } from "../../atoms";
 import { VscCode } from "react-icons/vsc";
-import HoverContainer from "./HoverContainer";
-import DotfilePopup from "./DotfilePopup";
-import BlurOverlay from "./BlurOverlay";
-import { readDotfile } from "../dotfiles";
+import DotfilePopup from "../popups/DotfilePopup";
+import BlurOverlay from "../popups/BlurOverlay";
+import { readDotfile } from "../../dotfiles";
+import HoverContainer from "../hover/HoverContainer";
 
 interface DotfileItemProp {
   dotfile: string;
@@ -57,7 +57,11 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
     (async () => {
       const res = await readDotfile(props.dotfile);
       const converted = res.toString();
-      setDotfileContent(converted === "[object Object]" ? JSON.stringify(res, null, 2) : converted);
+      setDotfileContent(
+        converted === "[object Object]"
+          ? JSON.stringify(res, null, 2)
+          : converted
+      );
     })();
   }, []);
 

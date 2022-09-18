@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import Header from "./containers/Header";
 import Packages from "./containers/Packages";
 import ProjectInfo from "./containers/ProjectInfo";
 

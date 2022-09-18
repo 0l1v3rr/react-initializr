@@ -1,17 +1,17 @@
-import Button from "../components/Button";
+import Button from "../components/buttons/Button";
 
 import { FiPackage } from "react-icons/fi";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import { useRecoilState } from "recoil";
 
 import { packagesArrayState } from "../atoms";
-import PackageItem from "../components/PackageItem";
+import PackageItem from "../components/items/PackageItem";
 import { useCallback, useEffect, useState } from "react";
-import BlurOverlay from "../components/BlurOverlay";
-import PackagesPopup from "../components/PackagesPopup";
+import BlurOverlay from "../components/popups/BlurOverlay";
+import PackagesPopup from "../components/popups/PackagesPopup";
 import axios from "axios";
 import { Package } from "../types";
-import HoverContainer from "../components/HoverContainer";
+import HoverContainer from "../components/hover/HoverContainer";
 
 const Packages = () => {
   const [packageArray, setPackageArray] = useRecoilState(packagesArrayState);

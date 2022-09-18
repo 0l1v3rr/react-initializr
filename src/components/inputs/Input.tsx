@@ -1,6 +1,6 @@
 import { Dispatch, FC, RefObject, SetStateAction, useId } from "react";
 import { MdOutlineClear } from "react-icons/md";
-import HoverContainer from "./HoverContainer";
+import HoverContainer from "../hover/HoverContainer";
 
 interface InputProps {
   label: string;

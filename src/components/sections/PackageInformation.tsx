@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { convertToKebabCase } from "../utils";
-import Input from "./Input";
+import { convertToKebabCase } from "../../utils";
+import Input from "../inputs/Input";
 
 import {
   nameState,
@@ -10,7 +10,7 @@ import {
   gitRepoState,
   authorState,
   homepageState,
-} from "../atoms";
+} from "../../atoms";
 
 const PackageInformation = () => {
   // default form values with recoil states

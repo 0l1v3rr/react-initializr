@@ -3,10 +3,10 @@ import { FC, useEffect, useState } from "react";
 
 import { IoCloseOutline } from "react-icons/io5";
 import { useRecoilValue } from "recoil";
-import { packagesArrayState } from "../atoms";
-import { convertToKebabCase } from "../utils";
-import Input from "./Input";
-import SearchItem from "./SearchItem";
+import { packagesArrayState } from "../../atoms";
+import { convertToKebabCase } from "../../utils";
+import Input from "../inputs/Input";
+import SearchItem from "../items/SearchItem";
 
 interface PopupProps {
   isActive: boolean;

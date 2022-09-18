@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { packagesArrayState } from "../atoms";
-import { Package } from "../types";
+import { packagesArrayState } from "../../atoms";
+import { Package } from "../../types";
 
 interface PackageItemProps {
   package: Package;

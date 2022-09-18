@@ -1,5 +1,5 @@
-import RadioInput from "./RadioInput";
-import { pmState } from "../atoms";
+import RadioInput from "../inputs/RadioInput";
+import { pmState } from "../../atoms";
 
 const PackageManager = () => {
   return (

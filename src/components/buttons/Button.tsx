@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IconType } from "react-icons/lib";
-import { convertToKebabCase } from "../utils";
+import { convertToKebabCase } from "../../utils";
 
 interface ButtonProps {
   text: string;

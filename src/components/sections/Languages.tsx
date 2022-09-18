@@ -1,9 +1,9 @@
-import RadioInput from "./RadioInput";
-import { languageState, packagesArrayState } from "../atoms";
+import RadioInput from "../inputs/RadioInput";
+import { languageState, packagesArrayState } from "../../atoms";
 import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import axios from "axios";
-import { Package } from "../types";
+import { Package } from "../../types";
 
 const Languages = () => {
   const tsPackages = [
