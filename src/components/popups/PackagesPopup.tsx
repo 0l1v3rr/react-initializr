@@ -35,13 +35,17 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
         .then((res) => {
           const resArr: any[] = [];
 
+          let counter = 1;
           for (let i of res.data.objects) {
             if (
               !packageArray.map((p) => p.packageName).includes(i.package.name)
             ) {
+              i.package.number = counter;
               resArr.push(i);
+              counter++;
             }
           }
+          counter = 0;
 
           setCurrentPackages(resArr);
         })
@@ -116,6 +120,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
                   version: (p as any).package.version,
                   isDev: false,
                 }}
+                n={(p as any).package.number}
                 onClick={onSearchItemClick}
               />
             );
