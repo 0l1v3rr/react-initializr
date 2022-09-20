@@ -7,6 +7,8 @@ export const dotfiles: string[] = [
   ".gitignore",
   ".prettierignore",
   ".prettierrc.json",
+  "postcss.config.js",
+  "tailwind.config.js"
 ];
 
 export const readDotfile = async (dotfile: string): Promise<string> => {
