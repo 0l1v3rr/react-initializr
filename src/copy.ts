@@ -14,6 +14,7 @@ export const copyLink = (
     homepage,
     name,
     packages,
+    dotfiles,
   } = p;
 
   // building the URL to copy
@@ -26,6 +27,7 @@ export const copyLink = (
   if (gitRepo.trim() !== "") params.append("repository", gitRepo);
   if (author.trim() !== "") params.append("author", author);
   if (homepage.trim() !== "") params.append("homepage", homepage);
+  if (dotfiles.length > 1) params.append("dotfiles", dotfiles.join(";"));
   params.append("language", language);
 
   const nonDefaultPackages = [...packages].filter((p) => p.removeable);

@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { convertToKebabCase } from "../../utils";
 import Input from "../inputs/Input";
 
@@ -10,6 +10,7 @@ import {
   gitRepoState,
   authorState,
   homepageState,
+  dotfilesState,
 } from "../../atoms";
 
 const PackageInformation = () => {
@@ -20,6 +21,7 @@ const PackageInformation = () => {
   const [gitRepo, setGitRepo] = useRecoilState(gitRepoState);
   const [author, setAuthor] = useRecoilState(authorState);
   const [homepage, setHomepage] = useRecoilState(homepageState);
+  const setDotfilesArray = useSetRecoilState(dotfilesState);
 
   // overriding the state value if the query param is not null
   useEffect(() => {
@@ -32,6 +34,7 @@ const PackageInformation = () => {
     const pRepo = params.get("repository");
     const pAuthor = params.get("author");
     const pHomepage = params.get("homepage");
+    const pDotfiles = params.get("dotfiles");
 
     if (pName !== null) setName(pName);
     if (pVersion !== null) setVersion(pVersion);
@@ -39,6 +42,8 @@ const PackageInformation = () => {
     if (pRepo !== null) setGitRepo(pRepo);
     if (pAuthor !== null) setAuthor(pAuthor);
     if (pHomepage !== null) setHomepage(pHomepage);
+    if (pDotfiles !== null)
+      setDotfilesArray(pDotfiles?.split(";") || [".gitignore"]);
   }, []);
 
   // converting the name into kebab-case
