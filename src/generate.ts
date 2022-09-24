@@ -47,7 +47,7 @@ export const generateZip = async (
   project?.file("README.md", `# ${name}`);
   fsrc?.file("index.css", indexcss);
   fsrc?.file(
-    language.toLowerCase() === "typescript" ? "Aptsx" : "Apjs",
+    language.toLowerCase() === "typescript" ? "App.tsx" : "App.js",
     appSrc
   );
   fpublic?.file("manifest.json", JSON.stringify(manifest, null, 2));
