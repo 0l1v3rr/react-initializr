@@ -73,3 +73,9 @@
 .radio:hover > label::before {
   border: 2px solid var(--react-color);
 }
+
+code {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

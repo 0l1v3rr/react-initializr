@@ -81,6 +81,7 @@ Shout-out to the creators for creating these tools:
 - [Recoil](https://recoiljs.org/)
 - [Tailwind](https://tailwindcss.com/)
 - [React GH Pages](https://github.com/gitname/react-gh-pages)
+- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
 
 <hr>
 

@@ -6,6 +6,8 @@ import DotfilePopup from "../popups/DotfilePopup";
 import BlurOverlay from "../popups/BlurOverlay";
 import { readDotfile } from "../../dotfiles";
 import HoverContainer from "../hover/HoverContainer";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 interface DotfileItemProp {
   dotfile: string;
@@ -82,27 +84,19 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
         closePopup={() => setIsPopupActive(false)}
         dotfileName={props.dotfile}
       >
-        <pre>
-          <code
-            className="px-4 py-2 flex flex-col gap-1 items-start cursor-text 
-            select-text selection:bg-zinc-600"
-          >
-            {dotfileContent.split("\n").map((line) => {
-              return (
-                <div
-                  key={`${line}+${Math.random()}`}
-                  className={`${
-                    line.startsWith("#") || line.startsWith("//")
-                      ? "text-zinc-400 mt-1"
-                      : "text-zinc-200"
-                  } font-mono`}
-                >
-                  {line}
-                </div>
-              );
-            })}
-          </code>
-        </pre>
+        <SyntaxHighlighter
+          language="javascript"
+          style={atomOneDark}
+          showLineNumbers={true}
+          customStyle={{
+            background: "rgb(24 24 27)",
+            textAlign: "left",
+            display: "flex",
+          }}
+          wrapLines={true}
+        >
+          {dotfileContent}
+        </SyntaxHighlighter>
       </DotfilePopup>
 
       <div
