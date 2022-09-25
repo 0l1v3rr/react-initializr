@@ -1,10 +1,27 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { dotfiles } from "../../dotfiles";
 import DotfileItem from "./DotfileItem";
 import { dotfilesState } from "../../atoms";
+import { useEffect, useCallback } from "react";
 
 const Dotfiles = () => {
-  const dotfilesArray = useRecoilValue(dotfilesState);
+  const [dotfilesArray, setDotfilesArray] = useRecoilState(dotfilesState);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const dotfilesParam = params.get("dotfiles");
+
+    setDotfilesArray(
+      dotfilesParam !== null ? dotfilesParam.split(";") : [".gitignore"]
+    );
+  }, []);
+
+  const isDotfileSelected = useCallback(
+    (dotfile: string): boolean => {
+      return dotfilesArray.includes(dotfile.toLowerCase());
+    },
+    [dotfilesArray]
+  );
 
   return (
     <section className="mt-3 flex flex-col gap-2">
@@ -21,7 +38,7 @@ const Dotfiles = () => {
             <DotfileItem
               dotfile={dotfile}
               key={dotfile}
-              isSelected={dotfilesArray.includes(dotfile)}
+              isSelected={isDotfileSelected(dotfile)}
             />
           );
         })}

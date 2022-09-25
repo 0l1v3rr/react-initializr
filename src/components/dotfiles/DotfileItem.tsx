@@ -20,6 +20,10 @@ const DotfileItem: FC<DotfileItemProp> = (props) => {
   const [isSelected, setIsSelected] = useState(props.isSelected);
   const setDotfiles = useSetRecoilState(dotfilesState);
 
+  useEffect(() => {
+    setIsSelected(props.isSelected);
+  }, [props.isSelected]);
+
   // close the popup when clicking the Esc key
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (event.isComposing || event.repeat) {
