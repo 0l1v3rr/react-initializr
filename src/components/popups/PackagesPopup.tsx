@@ -33,21 +33,12 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
           `https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=9`
         )
         .then((res) => {
-          const resArr: any[] = [];
-
-          let counter = 1;
-          for (let i of res.data.objects) {
-            if (
-              !packageArray.map((p) => p.packageName).includes(i.package.name)
-            ) {
-              i.package.number = counter;
-              resArr.push(i);
-              counter++;
-            }
-          }
-          counter = 0;
-
-          setCurrentPackages(resArr);
+          setCurrentPackages(
+            [...res.data.objects].filter(
+              (p: any) =>
+                !packageArray.map((o) => o.packageName).includes(p.package.name)
+            )
+          );
         })
         .catch(() => setCurrentPackages([]));
     } else {
@@ -109,7 +100,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
         )}
 
         {currentPackages.length !== 0 &&
-          currentPackages.map((p) => {
+          currentPackages.map((p, index) => {
             return (
               <SearchItem
                 key={(p as any).package.name}
@@ -120,7 +111,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
                   version: (p as any).package.version,
                   isDev: false,
                 }}
-                n={(p as any).package.number}
+                n={index + 1}
                 onClick={onSearchItemClick}
               />
             );
