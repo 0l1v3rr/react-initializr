@@ -30,7 +30,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
     if (searchValue.length > 3) {
       axios
         .get(
-          `https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=10`
+          `https://registry.npmjs.org/-/v1/search?text=${searchValue}&size=9`
         )
         .then((res) => {
           const resArr: any[] = [];

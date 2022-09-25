@@ -17,14 +17,17 @@ const SearchItem: FC<PackageItemProps> = (props) => {
     <div
       className={`w-full border-2 border-solid border-zinc-800 my-1 shadow-sm 
       rounded-md cursor-pointer transition-all duration-100 hover:border-zinc-700 
-      hover:bg-zinc-800 hover:scale-[101%] ${isAdded && "hidden"} flex`}
+      hover:bg-zinc-800 hover:scale-[101%] ${isAdded && "hidden"} flex group`}
       onClick={() => {
         setPackageArray((prev) => [...prev, props.package]);
         setIsAdded(true);
         props.onClick();
       }}
     >
-      <div className="border-r-2 border-zinc-800 px-2 py-1 flex items-center justify-center">
+      <div
+        className="border-r border-zinc-800 px-2 py-1 flex items-center 
+        justify-center group-hover:border-zinc-700 transition-all duration-100"
+      >
         {props.n}.
       </div>
 
