@@ -89,6 +89,7 @@ const PackagesPopup: FC<PopupProps> = ({ isActive, closePopup }) => {
           type="text"
           value={searchValue}
           setValue={setSearchValue}
+          isActive={isActive}
         />
       </div>
 

@@ -17,6 +17,7 @@ interface InputProps {
   setValue: Dispatch<SetStateAction<any>>;
   type: "text" | "password" | "number" | "url";
   required: boolean;
+  isActive?: boolean;
 }
 
 const Input: FC<InputProps> = (props) => {
@@ -31,7 +32,6 @@ const Input: FC<InputProps> = (props) => {
     if (event.target === inputRef.current) {
       if (event.key === "Escape") {
         inputRef.current?.blur();
-        return;
       }
     }
   }, []);
@@ -43,6 +43,11 @@ const Input: FC<InputProps> = (props) => {
     // remove the event listener
     return () => document.removeEventListener("keydown", handleKeyPress);
   }, [handleKeyPress]);
+
+  useEffect(() => {
+    if (props.isActive) inputRef.current?.focus();
+    else inputRef.current?.blur();
+  }, [props.isActive]);
 
   return (
     <div className="flex gap-2 items-center text-base relative my-2 w-full">
