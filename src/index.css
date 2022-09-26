@@ -36,6 +36,10 @@
 .show-child-on-hover:hover > div {
   opacity: 1;
 }
+.bg-react-before-after::before,
+.bg-react-before-after::after {
+  background-color: var(--react-color);
+}
 
 /* Radio input styles */
 .radio > label::before {
