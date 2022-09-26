@@ -1,4 +1,12 @@
-import { Dispatch, FC, RefObject, SetStateAction, useId } from "react";
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+} from "react";
 import { MdOutlineClear } from "react-icons/md";
 import HoverContainer from "../hover/HoverContainer";
 
@@ -13,6 +21,28 @@ interface InputProps {
 
 const Input: FC<InputProps> = (props) => {
   const id = `${props.label}-${useId()}`;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.isComposing || event.repeat) {
+      return;
+    }
+
+    if (event.target === inputRef.current) {
+      if (event.key === "Escape") {
+        inputRef.current?.blur();
+        return;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener("keydown", handleKeyPress);
+
+    // remove the event listener
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [handleKeyPress]);
 
   return (
     <div className="flex gap-2 items-center text-base relative my-2 w-full">
@@ -34,6 +64,7 @@ const Input: FC<InputProps> = (props) => {
           text-zinc-300 placeholder:text-zinc-600 shadow-md active:shadow-none focus:shadow-none peer"
         onChange={(e) => props.setValue(e.target.value)}
         autoComplete="off"
+        ref={inputRef}
       />
 
       <button

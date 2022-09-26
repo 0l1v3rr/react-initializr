@@ -73,13 +73,13 @@ const Packages = () => {
       return;
     }
 
-    if (event.key === "Escape") {
-      setIsPackagePopupActive(false);
+    // if the target is an input, we should not trigger the event
+    if ((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
       return;
     }
 
-    // if the target is an input, we should not trigger the event
-    if ((event.target as HTMLElement).tagName.toUpperCase() === "INPUT") {
+    if (event.key === "Escape") {
+      setIsPackagePopupActive(false);
       return;
     }
 

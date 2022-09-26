@@ -64,7 +64,8 @@ In order to make the site more convenient, you can use some keyboard shortcuts.
 - <kbd>Shift</kbd> + <kbd>H</kbd> - Hides/Shows the default packages in the packages list
 - <kbd>Shift</kbd> + <kbd>T</kbd> - Changes the React theme color to something random
 - <kbd>Shift</kbd> + <kbd>R</kbd> - Resets the React theme color to its original color
-- <kbd>Escape</kbd> - Closes every open popup window
+- <kbd>Escape</kbd> - Closes the currently open popup window
+- <kbd>Escape</kbd> - Deselects the active input field
 - <kbd>1</kbd>, <kbd>2</kbd>, <kbd>...</kbd>, <kbd>9</kbd> - If the package search popup is open, the number key selects the package displayed with that number.
 
 <hr>
